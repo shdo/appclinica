@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="<?= CSS . 'home.css' ?>"/>
         <link rel="stylesheet" href="<?= CSS . 'styles.css' ?>">
         <link rel="stylesheet" href="<?= CSS . 'cssDoctor.css' ?>">
+        <link rel="stylesheet" href="<?= CSS . 'table.css' ?>">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> 
         <script>
                 !window.jQuery && document.write("<script  src='js/jquery.min.js'> <\/script>");
@@ -27,7 +28,7 @@
                     <li class="itemPaciente"><a href="">Paciente <span>3</span></a>
                         <ul>
                             <li class="subitem1"><a class="cambio" href="<?= base_url() . 'home/agregar_paciente' ?>">Agregar nuevo Paciente </a></li>
-                            <li class="subitem2"><a href="">Listar  Paciente </a></li>
+                            <li class="subitem2"><a href="<?=base_url().'home/listar_paciente'?>">Listar  Paciente </a></li>
                             <li class="subitem3"><a href="">Exportar Paciente</a></li>
                         </ul>
                     </li>

@@ -42,6 +42,7 @@ $route['default_controller'] = "login/login";
 $route['login'] = "login/login";
 $route['home'] = "home/home";
 $route['home/agregar_paciente'] = "home/home/formPaciente";
+$route['home/listar_paciente'] = "home/home/formListarPaciente";
 $route['404_override'] = '';
 
 

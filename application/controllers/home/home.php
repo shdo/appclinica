@@ -24,5 +24,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         'contenido'=>$this->load->view('paciente/paciente_view',$estado_civil,TRUE));
             $this->load->view('home/home_view',$data);
         }
+        function formListarPaciente(){
+            if($this->session->userdata['is_logued_in']==FALSE){
+                redirect(base_url().'login');
+            }
+            $data=array('titulo'=>'Listar Paciente',
+                        'contenido'=>$this->load->view('paciente/paciente_view_listar','',TRUE));
+            $this->load->view('home/home_view',$data);
+        }
     }
 ?>
