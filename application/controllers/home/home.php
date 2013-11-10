@@ -16,6 +16,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         }
         
         function formPaciente(){
+            if($this->session->userdata['is_logued_in']==FALSE){
+                redirect(base_url().'login');
+            }
             $estado_civil['estadocivil']=array('S'=>'Soltero','C'=>'Casado','D'=>'Divorciado','V'=>'Viudo');
             $data=array('titulo'=>'Agregar Paciente',
                         'contenido'=>$this->load->view('paciente/paciente_view',$estado_civil,TRUE));
