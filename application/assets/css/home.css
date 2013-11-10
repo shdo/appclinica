@@ -1,0 +1,75 @@
+
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+
+
+::selection {
+    color: #fff;
+    background: #f676b2; /* Safari */
+}
+::-moz-selection {
+    color: #fff;
+    background: #f676b2; /* Firefox */
+}
+
+html{
+    /*	background: #333d43;*/
+
+}
+
+header#encabesado{
+
+    background: url(../img/baner.png) ;
+    padding:1.3em 4em;
+    height: 35px;
+}
+
+header#encabesado #logo
+{
+    width: 240px;
+    float: left;
+}
+
+header#encabesado #account_info
+{
+    font-family: 'Bree Serif', serif;
+    background: url(../img/doctor.png) no-repeat;	
+    height:35px;
+    padding-top:0.5em;
+    float: left;
+}
+
+.contenedor {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+
+    -webkit-box-align: stretch;
+    -moz-box-align: stretch;
+    box-align: stretch;
+
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    box-pack: justify;
+}
+
+#ayuda{
+    clear:  both;
+    padding-top: 2em;
+    cursor: pointer;
+}
+
+#finta{
+    visibility: hidden;
+    background:red; 
+    width: 6em;
+    height: 500px;
+    float: left;
+}
