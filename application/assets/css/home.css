@@ -1,6 +1,9 @@
 
 @import url(http://fonts.googleapis.com/css?family=Bree+Serif);
 
+body{
+	/*background-color: #efefef;*/
+}
 
 ::selection {
     color: #fff;

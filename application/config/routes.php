@@ -43,6 +43,12 @@ $route['login'] = "login/login";
 $route['home'] = "home/home";
 $route['home/agregar_paciente'] = "home/home/formPaciente";
 $route['home/listar_paciente'] = "home/home/formListarPaciente";
+$route['home/agregar_usuario'] = "home/home/formUsuario";
+$route['home/listado_usuario'] = "home/home/formListarUsuario";
+$route['home/agregar_doctor'] = "home/home/formDoctor";
+$route['home/listado_doctor'] = "home/home/formListarDoctor";
+$route['home/agregar_secretaria'] = "home/home/formSecretaria";
+$route['home/listado_secretaria'] = "home/home/formListarSecretaria";
 $route['404_override'] = '';
 
 

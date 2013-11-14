@@ -1,5 +1,5 @@
 <div class="legend">
-	<h2>Paciente: Listar Paciente</h2>
+	<h2>Paciente: Lista de Paciente</h2>
 </div>
 <br/>
 <form style="min-width: 1081px;">
@@ -11,7 +11,7 @@
 			<div class="posicion1">
 				<div style="float:left; width:250px; height:60px;">
 					<label>Buscar :</label>
-					<input type="text" name="txtnombre" value=""  placeholder="Escribe Nombres" required="" />
+					<input type="text" name="txtbuscar" value=""  placeholder="Escriba primer apellido" required="" />
 				</div>
 			</div>
 			<br><br><br>
@@ -20,15 +20,14 @@
 					<table id="gradient-style" style="width:1000px;">
 						<thead>
 							<tr>
-								<th style="width: 84px;">DNI</th>
-								<th style="width: 104px;">Nombres</th>
-								<th style="width: 184px;">Apellidos</th>
-								<th style="width: 34px;">Edad</th>
-								<th style="width: 224px;">Domicilio</th>
-								<th style="width: 84px;">Teléfono</th>
-								<th style="width: 34px;">Editar</th>
-								<th style="width: 34px;">Borrar</th>
-								<th style="width: 34px;">Reporte</th>
+								<th style="width: 14%;">Nombres</th>
+								<th style="width: 23%;">Apellidos</th>
+								<th style="width: 6%;">Edad</th>
+								<th style="width: 27%;">Domicilio</th>
+								<th style="width: 11%;">Teléfono</th>
+								<th style="width: 6%;">Editar</th>
+								<th style="width: 6%;">Borrar</th>
+								<th style="width: 7%;">Reporte</th>
 							</tr>
 						</thead>
 						<tbody>
