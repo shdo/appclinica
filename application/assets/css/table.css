@@ -14,7 +14,37 @@
 	color: #605555;
 }
 
-table {
-	height: 274px;
+.tbl-funciones td{
+	padding-top: 5px;
+	color: #003366;
+	font-family: Verdana;
+	font-size: 12px;
 }
 
+.row1 td{
+	padding-bottom: 5px;
+	padding-left: 3px;
+}
+
+.row1 input{
+	border:0;
+	width: 120px;
+}
+
+.row2 td{
+	padding-bottom: 5px;
+	padding-left: 3px;
+}
+.row2 input{
+	border:0;
+	width: 250px;
+}
+
+.row3 td{
+	padding-bottom: 5px;
+	padding-left: 3px;
+}
+.row3 input{
+	border:0;
+	width: 350px;
+}
