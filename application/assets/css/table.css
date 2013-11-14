@@ -1,27 +1,20 @@
-*{
-    margin: 0;
+.CSSTableGenerator tr:nth-child(odd) {
+	background-color: #b1b9c9;
+}
+.CSSTableGenerator tr:nth-child(even) {
+	background-color: #ffffff;
+}
+.CSSTableGenerator td {
+
+	border-width: 0px 1px 1px 0px;
+	text-align: center;
+	padding: 6px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #605555;
 }
 
-.area table{
-    border: 1px solid #e7e7e7;
-    margin: 0 -1px 24px 0;
-    text-align: left;
-    width: 100%;
-}
-
-caption {
-    text-align: center;
-    background-color: #EFEFEF;
-    border: 1px solid #CCCCCC;
-    border-bottom: none;
-    font-weight: bold;
-    padding: 5px;
-}
-
-table, tbody, tfoot, thead, tr, th, td {
-    background: transparent;
-    border: 0;
-    margin: 0;
-    padding: 0;
+table {
+	height: 274px;
 }
 

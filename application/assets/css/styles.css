@@ -18,6 +18,7 @@ nav{
     -moz-box-flex: 2;
     box-flex: 2;
     padding: 11px;
+    min-width: 1001px;
 }
 .menu {
     width: auto;

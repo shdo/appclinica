@@ -2,13 +2,29 @@
 
     width: 100%;
     height: 2em;
+    min-width: 1081px;
     background-color: #666666;
 
 }
+
+.content {
+	min-width: 1081px;
+	overflow: hidden;
+	clear: both;
+	float: left;
+	width: 100%;
+	background: white;
+}
+
 .area{
     width: 1070px;
     margin: auto;
 }
+
+.content_tab{
+	min-width: 1081px;
+}
+
 a{
     color: Red;
 }
@@ -197,6 +213,41 @@ textarea {
   .doctor {
   background-image: url(http://www.paulparish.co.uk/wp-content/uploads/2010/04/medical_doctor1.jpg) ;
 }
+
+
+
+ul.tabs {
+	margin: 0;
+	padding: 0;
+	float: left;
+	list-style: none;
+	height: auto;
+	background: white;
+	margin-bottom: 10px;
+}
+ul.tabs li {
+	float: left;
+	margin-right: 2px;
+	overflow: hidden; 
+	position: relative; 
+}
+ul.tabs li a {
+	display: block;
+	padding: 10px 23px;
+	background: #B5B5B5;
+	text-decoration: none;
+	color: white;
+}
+ul.tabs li a:hover {
+	background: #666666;
+}
+ul.tabs li.active a, html ul.tabs li.active a:hover {
+	background: #666666 !important;
+	color: white !important;
+}
+
+
+
    
 /*   
 textarea::-webkit-input-placeholder  {

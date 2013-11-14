@@ -21,6 +21,7 @@ header#encabesado{
     background: url(../img/baner.png) ;
     padding:1.3em 4em;
     height: 35px;
+    min-width: 1205px;
 }
 
 header#encabesado #logo
