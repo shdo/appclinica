@@ -17,8 +17,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							'edad'=>$this->input->post('txtedad'),
 							'ocupacion'=>$this->input->post('txtocupacion'),
 							'lugarnac'=>$this->input->post('txtLugarNac'),
-							'lugarproc'=>$this->input->post('txtdomicilio'),
-							'domicilio'=>$this->input->post('txtcontrasenia'),
+							'lugarproc'=>$this->input->post('txtLugaProc'),
+							'domicilio'=>$this->input->post('txtdomicilio'),
 							'telefono'=>$this->input->post('txttelefono'),);
 				$this->paciente_model->add($paciente);
 				$this->session->set_flashdata('mensaje','Se guardo satisfactoriamente');
@@ -34,8 +34,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							'edad'=>$this->input->post('txtedad'),
 							'ocupacion'=>$this->input->post('txtocupacion'),
 							'lugarnac'=>$this->input->post('txtLugarNac'),
-							'lugarproc'=>$this->input->post('txtdomicilio'),
-							'domicilio'=>$this->input->post('txtcontrasenia'),
+							'lugarproc'=>$this->input->post('txtLugaProc'),
+							'domicilio'=>$this->input->post('txtdomicilio'),
 							'telefono'=>$this->input->post('txttelefono'),);
 				$this->paciente_model->update($pacienteid,$paciente);
 				$this->session->set_flashdata('mensaje','Se actualizo satisfactoriamente');
