@@ -4,14 +4,14 @@
 			<div style="float:left; width:519px; height:60px;">
 				<label>Tiempo de Enfermedad (T.E) :</label>
 				<br/>
-				<input type="text" name="txthospitalizacion" value=""  placeholder="" required="" />
+				<input type="text" name="txthospitalizacion" value=""  placeholder=""   />
 			</div>
 		</div>
 		<div class="posicion1" >
 			<div style="float:left; width:519px; height:60px;">
 				<label>SP :</label>
 				<br/>
-				<input type="text" name="txthnocivos" value="" placeholder="" required=""/>
+				<input type="text" name="txthnocivos" value="" placeholder=""  />
 			</div>
 		</div>
 		<br/><br/><br/>

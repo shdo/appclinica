@@ -32,7 +32,7 @@
 				<div style="float:left; width:250px; height:60px;">
 					<label>Estado Civil:</label>
 					<br/>
-					<select name="list_estado">
+					<select name="list_estado" required="">
 						<option  selected="" value="">Seleccionar...</option>
 						<?php
 						foreach ($estadocivil as $key => $value) {
@@ -106,14 +106,14 @@
 				<div style="float:left; width:519px; height:60px;">
 					<label>Médicos :</label>
 					<br/>
-					<input type="text" name="txtmedicos" value=""  placeholder="Escriba Medicos" required="" />
+					<input type="text" name="txtmedicos" value=""  placeholder="Escriba Medicos" />
 				</div>
 			</div>
 			<div class="posicion1" >
 				<div style="float:left; width:519px; height:60px;">
 					<label>Quirúrgicos :</label>
 					<br/>
-					<input type="text" name="txtquirurgicos" value="" placeholder="Escriba antecedentes quirurgicos" required=""/>
+					<input type="text" name="txtquirurgicos" value="" placeholder="Escriba antecedentes quirurgicos"/>
 				</div>
 			</div>
 			<br/>
@@ -123,7 +123,7 @@
 				<div style="float:left; width:1040px; height:60px;">
 					<label>Alérgicos :</label>
 					<br/>
-					<input type="text" name="txtalergicos" value="" placeholder="Escriba alergias" required=""/>
+					<input type="text" name="txtalergicos" value="" placeholder="Escriba alergias"/>
 				</div>
 			</div>
 			<br/>
@@ -138,21 +138,21 @@
 				<div style="float:left; width:275px; height:60px;">
 					<label>FUR:</label>
 					<br/>
-					<input type="text" name="txtfur" value="" placeholder="" required=""/>
+					<input type="text" name="txtfur" value="" placeholder="" />
 				</div>
 			</div>
 			<div class="posicion1" >
 				<div style="float:left; width:275px; height:60px;">
 					<label>MENARQUIA:</label>
 					<br/>
-					<input type="text" name="txtmenarquia" value="" placeholder="" required=""/>
+					<input type="text" name="txtmenarquia" value="" placeholder=""/>
 				</div>
 			</div>
 			<div class="posicion1" >
 				<div style="float:left; width:275px; height:60px;">
 					<label>R.S.:</label>
 					<br/>
-					<input type="text" name="txtrs" value="" placeholder="" required=""/>
+					<input type="text" name="txtrs" value="" placeholder=""/>
 				</div>
 			</div>
 			<br/>
@@ -165,7 +165,7 @@
 				<div style="float:left; width:275px; height:60px;">
 					<label>R.C.:</label>
 					<br/>
-					<input type="text" name="txtrc" value="" placeholder="" required=""/>
+					<input type="text" name="txtrc" value="" placeholder=""/>
 				</div>
 			</div>
 			<div class="posicion1" >
@@ -174,14 +174,14 @@
 						<div style="float:left; width:50px; height:60px;">
 							<label>G:</label>
 							<br/>
-							<input type="text" name="txtg" value="" placeholder="" required=""/>
+							<input type="text" name="txtg" value="" placeholder=""/>
 						</div>
 					</div>
 					<div class="posicion1" style="padding-left: 0">
 						<div style="float:left; width:50px; height:60px;">
 							<label>P:</label>
 							<br/>
-							<input type="text" name="txtp" value="" placeholder="" required=""/>
+							<input type="text" name="txtp" value="" placeholder=""/>
 						</div>
 					</div>
 				</div>
@@ -190,7 +190,7 @@
 				<div style="float:left; width:275px; height:60px;">
 					<label>M.A.:</label>
 					<br/>
-					<input type="text" name="txtma" value="" placeholder="" required=""/>
+					<input type="text" name="txtma" value="" placeholder=""/>
 				</div>
 			</div>
 			<br/>
@@ -200,14 +200,14 @@
 				<div style="float:left; width:519px; height:60px;">
 					<label>Hospitalización :</label>
 					<br/>
-					<input type="text" name="txthospitalizacion" value=""  placeholder="" required="" />
+					<input type="text" name="txthospitalizacion" value=""  placeholder="" />
 				</div>
 			</div>
 			<div class="posicion1" >
 				<div style="float:left; width:519px; height:60px;">
 					<label>Hábitos Nocivos :</label>
 					<br/>
-					<input type="text" name="txthnocivos" value="" placeholder="" required=""/>
+					<input type="text" name="txthnocivos" value="" placeholder=""/>
 				</div>
 			</div>
 			<br/>
