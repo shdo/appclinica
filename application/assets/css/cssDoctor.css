@@ -233,7 +233,13 @@ ul.tabs li.active a, html ul.tabs li.active a:hover {
 	border: 1px solid #ABADB3;
 }
 
-
+.mensaje{
+	width: 220px; 
+	padding: 7px;
+	color: #006600; 
+	display: inline-block; 
+	/*background-color: #E2F9E3*/
+}
 
    
 /*   

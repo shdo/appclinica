@@ -5,9 +5,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         function __construct() {
             parent::__construct();
             $this->load->model('login/login_model');
-            $this->load->library('session');
-            $this->load->helper(array('url','form'));
-            $this->load->database();
         }
         
         function index(){

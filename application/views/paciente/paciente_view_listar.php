@@ -9,12 +9,17 @@
 		</legend>
 		<div class="area" style="display: table;">
 			<div class="posicion1">
-				<div style="float:left; width:250px; height:60px;">
+				<div style="float:left; width:250px; height:45px;">
 					<label>Buscar :</label>
 					<input type="text" name="txtbuscar" value=""  placeholder="Escriba primer apellido" required="" />
 				</div>
 			</div>
-			<br><br><br>
+			<div class="posicion1" style="margin-top: 0; clear: both">
+				<div style="float:left; width:250px; height:30px;">
+					<?php if(@$this->session->flashdata('mensaje')){echo ('<span class=mensaje><img src="'.IMG.'check.png'.'" width="16" height="16"/> '.$this->session->flashdata('mensaje').'</span>');}?>
+				</div>
+			</div>
+			<br><br>
 			<div class="posicion1">
 				<div style="float:left; width:1050px; min-height: 35px;">
 					<table id="gradient-style" style="width:1000px;">
@@ -31,72 +36,18 @@
 							</tr>
 						</thead>
 						<tbody>
-							<!--<tr>
-								<td>47351151</td>
-								<td>Julio Oscar Ivan</td>
-								<td>Torres Colan</td>
-								<td>68</td>
-								<td>Calle La Huaquilla 456 int D 2do piso</td>
-								<td>996514952</td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'edit.png'?>' width='20' height='20' /></a></td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'trash.png'?>' width='20' height='20' /></a></td>
+							<?php foreach ($pacientes as $paciente):?>
+							<tr>
+								<td><?=$paciente->nombre;?></td>
+								<td><?=$paciente->apepaterno.' '.$paciente->apematerno;?></td>
+								<td><?=$paciente->edad;?></td>
+								<td><?=$paciente->domicilio;?></td>
+								<td><?=$paciente->telefono;?></td>
+								<td style="text-align: center;"><a href='<?=base_url().'home/actualizar_paciente/'.$paciente->pacienteid?>'><img src='<?=IMG.'edit.png'?>' width='20' height='20' /></a></td>
+								<td style="text-align: center;"><a href='<?=base_url().'home/eliminar_paciente/'.$paciente->pacienteid?>'><img src='<?=IMG.'trash.png'?>' width='20' height='20' /></a></td>
 								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'doc.png'?>' width='20' height='20' /></a></td>
 							</tr>
-							<tr>
-								<td>47351151</td>
-								<td>Jorge Luis</td>
-								<td>Cangana Retuerto</td>
-								<td>68</td>
-								<td>Calle La Huaquilla 456 int D 2do piso</td>
-								<td>996514952</td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'edit.png'?>' width='20' height='20' /></a></td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'trash.png'?>' width='20' height='20' /></a></td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'doc.png'?>' width='20' height='20' /></a></td>
-							</tr>
-							<tr>
-								<td>47351151</td>
-								<td>Jorge Luis</td>
-								<td>Elcorrobarrutia Santiesteban</td>
-								<td>68</td>
-								<td>Calle La Huaquilla 456 int D 2do piso</td>
-								<td>996514952</td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'edit.png'?>' width='20' height='20' /></a></td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'trash.png'?>' width='20' height='20' /></a></td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'doc.png'?>' width='20' height='20' /></a></td>
-							</tr>
-							<tr>
-								<td>47351151</td>
-								<td>Julio Oscar Ivan</td>
-								<td>Torres Colan</td>
-								<td>68</td>
-								<td>Calle La Huaquilla 456 int D 2do piso</td>
-								<td>996514952</td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'edit.png'?>' width='20' height='20' /></a></td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'trash.png'?>' width='20' height='20' /></a></td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'doc.png'?>' width='20' height='20' /></a></td>
-							</tr>
-							<tr>
-								<td>47351151</td>
-								<td>Jorge Luis</td>
-								<td>Cangana Retuerto</td>
-								<td>68</td>
-								<td>Calle La Huaquilla 456 int D 2do piso</td>
-								<td>996514952</td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'edit.png'?>' width='20' height='20' /></a></td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'trash.png'?>' width='20' height='20' /></a></td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'doc.png'?>' width='20' height='20' /></a></td>
-							</tr>
-							<tr>
-								<td>47351151</td>
-								<td>Jorge Luis</td>
-								<td>Elcorrobarrutia Santiesteban</td>
-								<td>68</td>
-								<td>Calle La Huaquilla 456 int D 2do piso</td>
-								<td>996514952</td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'edit.png'?>' width='20' height='20' /></a></td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'trash.png'?>' width='20' height='20' /></a></td>
-								<td style="text-align: center;"><a href='#'><img src='<?=IMG.'doc.png'?>' width='20' height='20' /></a></td>
-							</tr>-->
+							<?php endforeach;?>
 						</tbody>
 						<tfoot></tfoot>
 					</table>

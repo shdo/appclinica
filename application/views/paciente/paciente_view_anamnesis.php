@@ -4,11 +4,12 @@
 			FILIACION
 		</legend>
 		<div class="area">
+			<input type="hidden" name="hdnpacienteid" value="<?=@$paciente->pacienteid;?>"/>
 			<div class="posicion1" >
 				<div style="float:left; width:250px; height:60px;">
 					<label>Nombre Paciente :</label>
 					<br/>
-					<input type="text" name="txtnombre" value=""  placeholder="Escribe Nombres" required="" />
+					<input type="text" name="txtnombre" value="<?=@$paciente->nombre;?>"  placeholder="Escriba Nombres" required="" />
 				</div>
 			</div>
 
@@ -16,7 +17,7 @@
 				<div style="float:left; width:250px; height:60px;">
 					<label>Apellido Paterno :</label>
 					<br/>
-					<input type="text" name="txtapePaterno" value="" placeholder="Escribe Ape. Paterno" required=""/>
+					<input type="text" name="txtapePaterno" value="<?=@$paciente->apepaterno;?>" placeholder="Escriba Ape. Paterno" required=""/>
 				</div>
 			</div>
 
@@ -24,7 +25,7 @@
 				<div style="float:left; width:250px; height:60px;">
 					<label>Apellido Materno :</label>
 					<br/>
-					<input type="text" name="txtapeMaterno" value="" placeholder="Escribe Ape. Materno" required=""/>
+					<input type="text" name="txtapeMaterno" value="<?=@$paciente->apematerno;?>" placeholder="Escriba Ape. Materno" required=""/>
 				</div>
 			</div>
 			<div class="posicion1" >
@@ -49,21 +50,21 @@
 				<div style="float:left; width:250px; height:60px;">
 					<label>Edad Paciente:</label>
 					<br/>
-					<input type="text" name="txtedadPaciente" value="" placeholder="Escribe Edad" required=""/>
+					<input type="text" name="txtedad" value="<?=@$paciente->edad;?>" placeholder="Escriba Edad" required=""/>
 				</div>
 			</div>
 			<div class="posicion1" >
 				<div style="float:left; width:250px; height:60px;">
 					<label>Ocupacion:</label>
 					<br/>
-					<input type="text" name="txtocupacion" value="" placeholder="Escribe Ocupacion" required="" />
+					<input type="text" name="txtocupacion" value="<?=@$paciente->ocupacion;?>" placeholder="Escribe Ocupacion" required="" />
 				</div>
 			</div>
 			<div class="posicion1" >
 				<div style="float:left; width:509px; height:60px;">
 					<label>Domicilio:</label>
 					<br/>
-					<input style="width: 503px" type="text" name="txtdomicilio" value="" placeholder="Escribe Domicilio" required="" />
+					<input style="width: 503px" type="text" name="txtdomicilio" value="<?=@$paciente->domicilio;?>" placeholder="Escribe Domicilio" required="" />
 				</div>
 			</div>
 			<br/>
@@ -73,7 +74,7 @@
 				<div style="float:left; width:250px; height:60px;">
 					<label>Telefono:</label>
 					<br/>
-					<input type="text" name="txttelefono" value="" placeholder="Escribe Telefono" required=""/>
+					<input type="text" name="txttelefono" value="<?=@$paciente->telefono;?>" placeholder="Escribe Telefono" required=""/>
 				</div>
 			</div>
 
@@ -81,14 +82,14 @@
 				<div style="float:left; width:250px; height:60px;">
 					<label>Lugar de Nacimiento:</label>
 					<br/>
-					<input type="text" name="txtLugarNac" value="" placeholder="Escribe Lugar Nac." required=""/>
+					<input type="text" name="txtLugarNac" value="<?=@$paciente->lugarnac;?>" placeholder="Escribe Lugar Nac." required=""/>
 				</div>
 			</div>
 			<div class="posicion1" >
 				<div style="float:left; width:250px; height:60px;">
 					<label>Lugar de Procedencia:</label>
 					<br/>
-					<input type="text" name="txtLugaProc" value="" placeholder="Escribe Lugar Proc." required=""/>
+					<input type="text" name="txtLugaProc" value="<?=@$paciente->lugarproc;?>" placeholder="Escribe Lugar Proc." required=""/>
 				</div>
 			</div>
 			<br/>
@@ -214,6 +215,11 @@
 			<br/>
 		</div>
 	</fieldset>
+	<div class="posicion1" style="float: left; padding-left: 0" >
+		<div style="float:right;  height:60px;">
+			<?php if(@$this->session->flashdata('mensaje')){echo ('<span class=mensaje><img src="'.IMG.'check.png'.'" width="16" height="16"/> '.$this->session->flashdata('mensaje').'</span>');}?>
+		</div>
+	</div>
 	<div class="posicion1" style="float: right;" >
 		<div style="float:left;  height:60px;">
 			<input type="submit" value="Guardar"  class="button red" />

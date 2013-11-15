@@ -14,7 +14,7 @@
 	</li>
 </ul>
 <div class="content">
-	<form name = "frm-addpacciente" action = "" method="post" style="min-width: 1081px;">
+	<form name = "frm-addpacciente" action = "<?=base_url().'paciente/paciente/addOrUpdate'?>" method="post" style="min-width: 1081px;">
 		<?=@$anamnesis?>
 		<?=@$enfermedad?>
 		<?=@$informe?>

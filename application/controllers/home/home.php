@@ -5,6 +5,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             parent::__construct();
             $this->load->library('session');
             $this->load->helper('url');
+			$this->load->model('medico/medico_model');
+			$this->load->model('persona/persona_model');
+			$this->load->model('usuario/usuario_model');
+			$this->load->model('paciente/paciente_model');
         }
         
         function index(){
@@ -31,8 +35,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             if($this->session->userdata['is_logued_in']==FALSE){
                 redirect(base_url().'login');
             }
+			$paciente['pacientes'] = $this->paciente_model->getAll();
             $data=array('titulo'=>'Listar Paciente',
-                        'contenido'=>$this->load->view('paciente/paciente_view_listar','',TRUE));
+                        'contenido'=>$this->load->view('paciente/paciente_view_listar',$paciente,TRUE));
             $this->load->view('home/home_view',$data);
         }
 		
@@ -40,8 +45,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			if($this->session->userdata['is_logued_in']==FALSE){
                 redirect(base_url().'login');
             }
+			$persona['personas']=$this->persona_model->getAll();
 			$data=array('titulo'=>'Agregar Usuario',
-                        'contenido'=>$this->load->view('usuario/usuario_view','',TRUE));
+                        'contenido'=>$this->load->view('usuario/usuario_view',$persona,TRUE));
 			$this->load->view('home/home_view',$data);
 		}
 		
@@ -49,8 +55,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			if($this->session->userdata['is_logued_in']==FALSE){
                 redirect(base_url().'login');
             }
+			$usuario['usuarios'] = $this->usuario_model->getAll();
 			$data=array('titulo'=>'Listado de Usuarios',
-                        'contenido'=>$this->load->view('usuario/usuario_view_listar','',TRUE));
+                        'contenido'=>$this->load->view('usuario/usuario_view_listar',$usuario,TRUE));
 			$this->load->view('home/home_view',$data);
 		}
 		
@@ -58,8 +65,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			if($this->session->userdata['is_logued_in']==FALSE){
                 redirect(base_url().'login');
             }
+			$estado_civil['estadocivil']=array('1'=>'Soltero','2'=>'Casado','3'=>'Viudo','4'=>'Divorciado');
 			$data=array('titulo'=>'Agregar Doctor',
-                        'contenido'=>$this->load->view('doctor/doctor_view','',TRUE));
+                        'contenido'=>$this->load->view('doctor/doctor_view',$estado_civil,TRUE));
 			$this->load->view('home/home_view',$data);
 		}
 		
@@ -67,8 +75,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			if($this->session->userdata['is_logued_in']==FALSE){
                 redirect(base_url().'login');
             }
+			$medico['medicos'] = $this->medico_model->getAll();
 			$data=array('titulo'=>'Listado de Doctores',
-                        'contenido'=>$this->load->view('doctor/doctor_view_list','',TRUE));
+                        'contenido'=>$this->load->view('doctor/doctor_view_list',$medico,TRUE));
 			$this->load->view('home/home_view',$data);
 		}
 		

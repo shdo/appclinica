@@ -33,10 +33,10 @@
                             <li class="subitem2"><a href="<?=base_url().'home/listar_paciente'?>">Lista de Paciente </a></li>
                         </ul>
                     </li>
-                    <li class="itemDoctor"><a href="">Doctor <span>2</span></a>
+                    <li class="itemDoctor"><a href="">Medico <span>2</span></a>
                         <ul>
-                            <li class="subitem1"><a class="cambio"href="<?=base_url().'home/agregar_doctor'?>">Agregar nuevo Doctor </a></li>
-                            <li class="subitem2"><a href="<?=base_url().'home/listado_doctor'?>">Lista de Doctores </a></li>
+                            <li class="subitem1"><a class="cambio"href="<?=base_url().'home/agregar_doctor'?>">Agregar nuevo Medico </a></li>
+                            <li class="subitem2"><a href="<?=base_url().'home/listado_doctor'?>">Lista de Medicos </a></li>
                         </ul>
                     </li>
                     <li class="itemSecretaria"><a href="">Secretaria <span>2</span></a>
