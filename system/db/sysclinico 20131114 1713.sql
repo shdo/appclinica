@@ -223,7 +223,7 @@ CREATE TABLE IF NOT EXISTS tb_usuario (
   usuarioid INT(11) NOT NULL AUTO_INCREMENT,
   usuario VARCHAR(100) NOT NULL,
   contrasenia VARCHAR(100) DEFAULT NULL,
-  tiposuario VARCHAR(20) NOT NULL,
+  tipousuario VARCHAR(20) NOT NULL,
   personaid INT(11) NOT NULL,
   PRIMARY KEY (usuarioid),
   UNIQUE INDEX personaid (personaid),
