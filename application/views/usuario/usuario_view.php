@@ -60,9 +60,9 @@
 							<label style="width: 18%; float: left; text-align: right;">Tipo :</label>
 							<select required="" name="list_tipousuario" style="width: 330px"">
 								<option  selected="<?=@$usuario->tipousuario;?>" value="">Seleccionar...</option>
-								<option  value="Administrador">Administrador</option>
-								<option  value="Medico">Médico</option>
-								<option  value="Secretaria">Secretaria</option>
+								<option  value="administrador">Administrador</option>
+								<option  value="medico">Médico</option>
+								<option  value="secretaria">Secretaria</option>
 							</select>
 						</div>
 					</div>

@@ -9,7 +9,17 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         
         function index(){
             if(@$this->session->userdata['is_logued_in']){
-                redirect(base_url().'home');
+                switch ($this->session->userdata['tipousuario']){
+                    case 'administrador':
+                        $this->load->view('home/home_view');
+                        break;
+                    case 'medico':
+                        $this->load->view('home/home_view');
+                        break;
+                    case 'secretaria':
+                        $this->load->view('home/home_view');
+                        break;
+                }
             }else{
                 $this->load->view('login/login_form');
             }
@@ -25,6 +35,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     'is_logued_in'=>TRUE,
                     'usuarioid'=>$check_user->usuarioid,
                     'usuario'=>$check_user->usuario,
+                    'tipousuario'=>$check_user->tipousuario
                 );
                 $this->session->set_userdata($data);
                 $this->index();

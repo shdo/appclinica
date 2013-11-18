@@ -14,6 +14,7 @@
         <script type="text/javascript" src="<?=JS.'jquery.min.js'?>"></script>
         <script type="text/javascript" src="<?= JS . 'viewLogen.js' ?>"></script>
         <script type="text/javascript" src="<?= JS . 'tab.js' ?>"></script>
+        <script type="text/javascript" src="<?= JS . 'roles.js' ?>"></script>
     </head>
     <body>
         <header id="encabesado">
@@ -25,6 +26,7 @@
             </div>    
         </header>
         <div class="contenedor">
+            <input class="usuario" type="hidden" value="<?=@$this->session->userdata['tipousuario']?>"/>
             <nav>
                 <ul class="menu">
                     <li class="itemPaciente"><a href="">Paciente <span>2</span></a>
