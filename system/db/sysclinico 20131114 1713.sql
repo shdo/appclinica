@@ -68,6 +68,7 @@ CREATE TABLE IF NOT EXISTS tb_paciente (
   lugarproc VARCHAR(30) DEFAULT NULL,
   domicilio CHAR(150) DEFAULT NULL,
   telefono DECIMAL(10, 0) DEFAULT NULL,
+  estado CHAR(1) NOT NULL,
   PRIMARY KEY (pacienteid)
 )
 ENGINE = INNODB

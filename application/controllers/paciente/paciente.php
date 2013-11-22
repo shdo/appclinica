@@ -7,6 +7,28 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			$this->load->model('paciente/paciente_model');
     	}
 		
+		function report(){
+			$this->html2pdf->folder('./files/pdfs/paciente/');
+			$this->html2pdf->filename('historia_clinica.pdf');
+			$this->html2pdf->paper('legal','portrait');
+			$pacienteid = $this->uri->segment(4);
+			$paciente['paciente'] = $this->paciente_model->get($pacienteid);
+			$this->html2pdf->html(utf8_decode($this->load->view('paciente/paciente_view_report',$paciente,TRUE)));
+			
+			if($this->html2pdf->create('save')){
+				if(is_dir("./files/pdfs/paciente"))
+        		{
+            		$filename = "historia_clinica.pdf"; 
+            		$route = base_url("files/pdfs/paciente/historia_clinica.pdf"); 
+            		if(file_exists("./files/pdfs/paciente/".$filename))
+            		{
+                		header('Content-type: application/pdf'); 
+                		readfile($route);
+            		}	
+        		}
+			}
+		}
+		
 		function addOrUpdate(){
 			if($this->input->post('hdnpacienteid')==NULL){
 				$paciente = array(
@@ -19,7 +41,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							'lugarnac'=>$this->input->post('txtLugarNac'),
 							'lugarproc'=>$this->input->post('txtLugaProc'),
 							'domicilio'=>$this->input->post('txtdomicilio'),
-							'telefono'=>$this->input->post('txttelefono'),);
+							'telefono'=>$this->input->post('txttelefono'),
+							'estado'=>'A');
 				$this->paciente_model->add($paciente);
 				$this->session->set_flashdata('mensaje','Se guardo satisfactoriamente');
 				redirect(base_url().'home/agregar_paciente','refresh');
@@ -36,7 +59,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							'lugarnac'=>$this->input->post('txtLugarNac'),
 							'lugarproc'=>$this->input->post('txtLugaProc'),
 							'domicilio'=>$this->input->post('txtdomicilio'),
-							'telefono'=>$this->input->post('txttelefono'),);
+							'telefono'=>$this->input->post('txttelefono'));
 				$this->paciente_model->update($pacienteid,$paciente);
 				$this->session->set_flashdata('mensaje','Se actualizo satisfactoriamente');
 				redirect(base_url().'home/listar_paciente','refresh');
@@ -46,7 +69,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		
 		function delete(){
 			$pacienteid = $this->uri->segment(3);
-			$this->paciente_model->delete($pacienteid);
+			$paciente = array('estado'=>'D');
+			$this->paciente_model->delete($pacienteid,$paciente);
 			$this->session->set_flashdata('mensaje','Se elimino satisfactoriamente');
 			redirect(base_url().'home/listar_paciente','refresh');
 		}

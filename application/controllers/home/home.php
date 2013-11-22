@@ -10,6 +10,7 @@ class Home extends CI_Controller {
         $this->load->library('session');
         $this->load->helper('url');
         $this->load->model('medico/medico_model');
+		$this->load->model('secretaria/secretaria_model');
         $this->load->model('persona/persona_model');
         $this->load->model('usuario/usuario_model');
         $this->load->model('paciente/paciente_model');
@@ -100,8 +101,9 @@ class Home extends CI_Controller {
         if ($this->session->userdata['is_logued_in'] == FALSE) {
             redirect(base_url() . 'login');
         }
-        $data = array('titulo' => 'Listado de Doctores',
-            'contenido' => $this->load->view('secretaria/secretaria_view_list', '', TRUE));
+		$secretaria['secretarias'] = $this->secretaria_model->getAll();
+        $data = array('titulo' => 'Lista de Secretarias',
+            'contenido' => $this->load->view('secretaria/secretaria_view_list', $secretaria, TRUE));
         $this->load->view('home/home_view', $data);
     }
 }

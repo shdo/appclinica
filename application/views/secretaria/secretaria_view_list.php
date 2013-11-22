@@ -14,6 +14,11 @@
                     <input type="text" name="txtbuscar" value=""  placeholder="Escriba primer apellido" required="" />
                 </div>
             </div>
+            <div class="posicion1" >
+            	<div style="float:left; width:340px; height:60px;">
+					<a href="<?=base_url().'secretaria/secretaria/report'?>" target="_blank"><input type="button" value="Exportar"  class="button red" /></a>
+				</div>
+			</div>
             <br><br><br>
             <div class="posicion1">
                 <div style="float:left; width:1050px; min-height: 35px;">
@@ -33,7 +38,22 @@
                                 <?php endif?>
                             </tr>
                         </thead>
-                        <tbody>
+                       <tbody>
+                        <?php foreach ($secretarias as $secretaria): ?>
+                            <tr>
+                                <td><?= $secretaria->dni; ?></td>
+                                <td><?= $secretaria->nombres; ?></td>
+                                <td><?= $secretaria->apepaterno . ' ' . $secretaria->apematerno; ?></td>
+                                <td>edad</td>
+                                <td><?= $secretaria->domicilio; ?></td>
+                                <td><?= $secretaria->telefono; ?></td>
+                                <?php if ($this->session->userdata['tipousuario']=='administrador'): ?>
+                                <td style="text-align: center;"><a href='<?= base_url() . 'home/actualizar_secretaria/' . $secretaria->personaid ?>'><img src='<?= IMG . 'edit.png' ?>' width='20' height='20' /></a></td>
+                                <td style="text-align: center;"><a href='<?= base_url() . 'home/eliminar_secretaria/' . $secretaria->secretariaid . '/' . $secretaria->personaid ?>'><img src='<?= IMG . 'trash.png' ?>' width='20' height='20' /></a></td>
+                                <?php endif ?>
+                                    <!--<td style="text-align: center;"><a href='#'><img src='<?= IMG . 'doc.png' ?>' width='20' height='20' /></a></td>-->
+                                </tr>
+                        <?php endforeach; ?>
                         </tbody>
                         <tfoot></tfoot>
                     </table>

@@ -9,6 +9,27 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			$this->load->model('persona/persona_model');
     	}
 		
+		function report(){
+			$this->html2pdf->folder('./files/pdfs/usuario/');
+			$this->html2pdf->filename('usuarios.pdf');
+			$this->html2pdf->paper('a4','portrait');
+			$usuario['usuarios'] = $this->usuario_model->getAll();
+			$this->html2pdf->html(utf8_decode($this->load->view('usuario/usuario_view_report',$usuario,TRUE)));
+			
+			if($this->html2pdf->create('save')){
+				if(is_dir("./files/pdfs/usuario"))
+        		{
+            		$filename = "usuarios.pdf"; 
+            		$route = base_url("files/pdfs/usuario/usuarios.pdf"); 
+            		if(file_exists("./files/pdfs/usuario/".$filename))
+            		{
+                		header('Content-type: application/pdf'); 
+                		readfile($route);
+            		}	
+        		}
+			}
+		}
+		
 		function addOrUpdate(){
 			if($this->input->post('hdnusuarioid')==NULL){
 				$usuario = array(

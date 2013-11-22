@@ -50,7 +50,7 @@
 					<div style="float:left; width:340px; height:60px;">
 						<label>Estado Civil:</label>
 						<br/>
-						<select name="list_estado" style="width: 245px;">
+						<select name="list_estado" style="width: 245px;" required>
 							<option  selected="" value="">Seleccionar...</option>
 							<?php
 								foreach ($estadocivil as $key => $value) {

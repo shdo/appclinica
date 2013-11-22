@@ -15,6 +15,11 @@
 						<input type="text" name="txtnombre" value=""  placeholder="Buscar usuario" required="" />
 					</div>
 				</div>
+				<div class="posicion1" >
+            		<div style="float:left; width:340px; height:60px;">
+						<a href="<?=base_url().'usuario/usuario/report'?>" target="_blank"><input type="button" value="Exportar"  class="button red" /></a>
+					</div>
+				</div>
 				<div class="posicion1" style="margin-top: 0; clear: both">
 					<div style="float:left; width:250px; height:30px;">
 						<?php if(@$this->session->flashdata('mensaje')){echo ('<span class=mensaje><img src="'.IMG.'check.png'.'" width="16" height="16"/> '.$this->session->flashdata('mensaje').'</span>');}?>

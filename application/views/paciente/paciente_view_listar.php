@@ -51,7 +51,7 @@
                                         <td style="text-align: center;"><a href='<?= base_url() . 'home/actualizar_paciente/' . $paciente->pacienteid ?>'><img src='<?= IMG . 'edit.png' ?>' width='20' height='20' /></a></td>
                                         <td style="text-align: center;"><a href='<?= base_url() . 'home/eliminar_paciente/' . $paciente->pacienteid ?>'><img src='<?= IMG . 'trash.png' ?>' width='20' height='20' /></a></td>
                                     <?php endif ?>
-                                    <td style="text-align: center;"><a href='#'><img src='<?= IMG . 'doc.png' ?>' width='20' height='20' /></a></td>
+                                    <td style="text-align: center;"><a href='<?=base_url().'paciente/paciente/report/'.$paciente->pacienteid?>' target="_blank"><img src='<?= IMG . 'doc.png' ?>' width='20' height='20' /></a></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

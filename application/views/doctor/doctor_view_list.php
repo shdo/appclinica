@@ -14,6 +14,11 @@
                     <input type="text" name="txtbuscar" value=""  placeholder="Escriba primer apellido" required="" />
                 </div>
             </div>
+            <div class="posicion1" >
+            	<div style="float:left; width:340px; height:60px;">
+					<a href="<?=base_url().'medico/medico/report'?>" target="_blank"><input type="button" value="Exportar"  class="button red" /></a>
+				</div>
+			</div>
             <div class="posicion1" style="margin-top: 0; clear: both">
                 <div style="float:left; width:250px; height:30px;">
                     <?php if (@$this->session->flashdata('mensaje')) {
@@ -37,7 +42,6 @@
                                 <th style="width: 34px;">Editar</th>
                                 <th style="width: 34px;">Borrar</th>
                                 <?php endif ?>
-                                <!--<th style="width: 34px;">Reporte</th>-->
                             </tr>
                         </thead>
                         <tbody>
@@ -53,11 +57,10 @@
                                 <td style="text-align: center;"><a href='<?= base_url() . 'home/actualizar_doctor/' . $medico->personaid ?>'><img src='<?= IMG . 'edit.png' ?>' width='20' height='20' /></a></td>
                                 <td style="text-align: center;"><a href='<?= base_url() . 'home/eliminar_doctor/' . $medico->medicoid . '/' . $medico->personaid ?>'><img src='<?= IMG . 'trash.png' ?>' width='20' height='20' /></a></td>
                                 <?php endif ?>
-                                    <!--<td style="text-align: center;"><a href='#'><img src='<?= IMG . 'doc.png' ?>' width='20' height='20' /></a></td>-->
-                                </tr>
+                            </tr>
                         <?php endforeach; ?>
                         </tbody>
-                        <tfoot></tfoot>
+                        <div></div>
                     </table>
                 </div>
             </div>

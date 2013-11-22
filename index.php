@@ -3,6 +3,7 @@ define('URL','http://localhost/appclinica/');
 define('IMG', URL.'application/assets/img/');
 define('CSS', URL.'application/assets/css/');
 define('JS', URL.'application/assets/js/');
+define('FILES', URL.'application/assets/files/');
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT

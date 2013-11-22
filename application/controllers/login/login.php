@@ -11,13 +11,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             if(@$this->session->userdata['is_logued_in']){
                 switch ($this->session->userdata['tipousuario']){
                     case 'administrador':
-                        $this->load->view('home/home_view');
+                        redirect(base_url().'home');
                         break;
                     case 'medico':
-                        $this->load->view('home/home_view');
+                        redirect(base_url().'home');
                         break;
                     case 'secretaria':
-                        $this->load->view('home/home_view');
+                        redirect(base_url().'home');
                         break;
                 }
             }else{

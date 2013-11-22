@@ -5,6 +5,7 @@
         }
 		
 		function getAll(){
+			$this->db->where('estado','A');
 			$query = $this->db->get('tb_paciente');
 			return $query->result();
 		}
@@ -21,10 +22,21 @@
 				return FALSE;
 			}
 		}
-		function delete($pacienteid){
+		/*function delete($pacienteid){
 				
 			$this->db->where('pacienteid',$pacienteid);
 			$this->db->delete('tb_paciente');
+		}*/
+		
+		function delete($pacienteid, $paciente){
+				
+			$this->db->where('pacienteid',$pacienteid);
+			if($this->db->update('tb_paciente',$paciente)){
+				return TRUE;
+			}
+			else{
+				return FALSE;
+			}
 		}
 		
 		function update($pacienteid, $paciente){

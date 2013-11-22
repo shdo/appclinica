@@ -55,6 +55,8 @@ $route['home/eliminar_doctor/(:num)/(:any)'] = "medico/medico/delete/$1/$2";
 $route['home/listado_doctor'] = "home/home/formListarDoctor";
 $route['home/agregar_secretaria'] = "home/home/formSecretaria";
 $route['home/listado_secretaria'] = "home/home/formListarSecretaria";
+$route['home/actualizar_secretaria/(:num)'] = "secretaria/secretaria/get/$1";
+$route['home/eliminar_secretaria/(:num)/(:any)'] = "secretaria/secretaria/delete/$1/$2";
 $route['404_override'] = '';
 
 
