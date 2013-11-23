@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<title>Lista de Medicos</title>
 		<link rel="stylesheet" href="<?= CSS . 'table.css' ?>">
 	</head>
 	<body>

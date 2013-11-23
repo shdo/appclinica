@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html style="margin: 0px;">
-	<head></head>
+	<head>
+		<title>Historia Clinica</title>
+	</head>
 	<body style="background: #E3E2A8;">
 		<div style="padding: 50px;">
 			<div style="width: 100%;">
