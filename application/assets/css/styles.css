@@ -16,6 +16,7 @@ nav{
 #principal {
     -webkit-box-flex: 2;
     -moz-box-flex: 2;
+    -ms-flex: 2;
     box-flex: 2;
     padding: 11px;
     min-width: 1001px;

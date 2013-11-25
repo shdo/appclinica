@@ -45,23 +45,8 @@ header#encabesado #account_info
 .contenedor {
     display: -webkit-box;
     display: -moz-box;
+    display: -ms-flexbox;
     display: box;
-
-    -webkit-box-orient: horizontal;
-    -moz-box-orient: horizontal;
-    box-orient: horizontal;
-
-    -webkit-box-align: stretch;
-    -moz-box-align: stretch;
-    box-align: stretch;
-
-    -webkit-box-direction: normal;
-    -moz-box-direction: normal;
-    box-direction: normal;
-
-    -webkit-box-pack: justify;
-    -moz-box-pack: justify;
-    box-pack: justify;
 }
 
 #ayuda{
