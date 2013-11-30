@@ -4,17 +4,16 @@
         <meta charset="utf-8">   
         <title><?= @$titulo ?></title>
         <link rel="stylesheet" href="<?= CSS . 'home.css' ?>"/>
-        <link rel="stylesheet" href="<?= CSS . 'styles.css' ?>">
-        <link rel="stylesheet" href="<?= CSS . 'cssDoctor.css' ?>">
-        <link rel="stylesheet" href="<?= CSS . 'table.css' ?>">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> 
-        <script>
-                !window.jQuery && document.write("<script src='"+<?=JS.'jquery.min.js'?>+"'>"+"<\/script>");
-        </script>
-        <!--<script type="text/javascript" src="<?=JS.'jquery.min.js'?>"></script>-->
+        <link rel="stylesheet" href="<?= CSS . 'styles.css' ?>"/>
+        <link rel="stylesheet" href="<?= CSS . 'cssDoctor.css' ?>"/>
+        <link rel="stylesheet" href="<?= CSS . 'table.css' ?>"/>
+        <link rel="stylesheet" href="<?= CSS . 'reveal.css' ?>"/>
+        <script src="<?=JS.'jquery-1.10.2.min.js'?>"></script>
+        <script src="<?=JS.'jquery.reveal.js'?>"></script>
         <script type="text/javascript" src="<?= JS . 'viewLogen.js' ?>"></script>
         <script type="text/javascript" src="<?= JS . 'tab.js' ?>"></script>
         <script type="text/javascript" src="<?= JS . 'roles.js' ?>"></script>
+        <script type="text/javascript" src="<?= JS . 'modalAdd.js' ?>"></script>
     </head>
     <body>
         <header id="encabesado">

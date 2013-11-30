@@ -4,9 +4,7 @@
         <meta charset="utf-8" />
         <title>SeguridadDoctorWeb</title>
         <link href="<?= CSS.'seguridad-sesion.css'?>" rel="stylesheet" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> <script>
-                !window.jQuery && document.write("<script  src='<?JS.'jquery.min.js'?>'> <\/script>");
-        </script>
+        <script src="<?=JS.'jquery-1.10.2.min.js'?>"></script>
         <script src="<?= JS.'viewLogen.js'?>"></script>
     </head>
     <body>

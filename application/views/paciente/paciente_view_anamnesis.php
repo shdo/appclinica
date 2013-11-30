@@ -5,6 +5,7 @@
 		</legend>
 		<div class="area">
 			<input type="hidden" name="hdnpacienteid" value="<?=@$paciente->pacienteid;?>"/>
+			<input type="hidden" name="hdnhistoriaid" value="<?=@$historia->historiaclinicaid;?>"/>
 			<div class="posicion1" >
 				<div style="float:left; width:250px; height:60px;">
 					<label>Nombre Paciente :</label>
@@ -106,14 +107,14 @@
 				<div style="float:left; width:519px; height:60px;">
 					<label>Médicos :</label>
 					<br/>
-					<input type="text" name="txtmedicos" value=""  placeholder="Escriba Medicos" />
+					<input type="text" name="txtmedicos" value="<?=@$historia->medicos;?>"  placeholder="Escriba Medicos" />
 				</div>
 			</div>
 			<div class="posicion1" >
 				<div style="float:left; width:519px; height:60px;">
 					<label>Quirúrgicos :</label>
 					<br/>
-					<input type="text" name="txtquirurgicos" value="" placeholder="Escriba antecedentes quirurgicos"/>
+					<input type="text" name="txtquirurgicos" value="<?=@$historia->quirurgicos;?>" placeholder="Escriba antecedentes quirurgicos"/>
 				</div>
 			</div>
 			<br/>
@@ -123,7 +124,7 @@
 				<div style="float:left; width:1040px; height:60px;">
 					<label>Alérgicos :</label>
 					<br/>
-					<input type="text" name="txtalergicos" value="" placeholder="Escriba alergias"/>
+					<input type="text" name="txtalergicos" value="<?=@$historia->alergicos;?>" placeholder="Escriba alergias"/>
 				</div>
 			</div>
 			<br/>
@@ -138,21 +139,21 @@
 				<div style="float:left; width:275px; height:60px;">
 					<label>FUR:</label>
 					<br/>
-					<input type="text" name="txtfur" value="" placeholder="" />
+					<input type="text" name="txtfur" value="<?=@$historia->fur;?>" placeholder="" />
 				</div>
 			</div>
 			<div class="posicion1" >
 				<div style="float:left; width:275px; height:60px;">
 					<label>MENARQUIA:</label>
 					<br/>
-					<input type="text" name="txtmenarquia" value="" placeholder=""/>
+					<input type="text" name="txtmenarquia" value="<?=@$historia->menarquia;?>" placeholder=""/>
 				</div>
 			</div>
 			<div class="posicion1" >
 				<div style="float:left; width:275px; height:60px;">
 					<label>R.S.:</label>
 					<br/>
-					<input type="text" name="txtrs" value="" placeholder=""/>
+					<input type="text" name="txtrs" value="<?=@$historia->rs;?>" placeholder=""/>
 				</div>
 			</div>
 			<br/>
@@ -165,7 +166,7 @@
 				<div style="float:left; width:275px; height:60px;">
 					<label>R.C.:</label>
 					<br/>
-					<input type="text" name="txtrc" value="" placeholder=""/>
+					<input type="text" name="txtrc" value="<?=@$historia->rc;?>" placeholder=""/>
 				</div>
 			</div>
 			<div class="posicion1" >
@@ -174,14 +175,14 @@
 						<div style="float:left; width:50px; height:60px;">
 							<label>G:</label>
 							<br/>
-							<input type="text" name="txtg" value="" placeholder=""/>
+							<input type="text" name="txtg" value="<?=@$historia->g;?>" placeholder=""/>
 						</div>
 					</div>
 					<div class="posicion1" style="padding-left: 0">
 						<div style="float:left; width:50px; height:60px;">
 							<label>P:</label>
 							<br/>
-							<input type="text" name="txtp" value="" placeholder=""/>
+							<input type="text" name="txtp" value="<?=@$historia->p;?>" placeholder=""/>
 						</div>
 					</div>
 				</div>
@@ -190,7 +191,7 @@
 				<div style="float:left; width:275px; height:60px;">
 					<label>M.A.:</label>
 					<br/>
-					<input type="text" name="txtma" value="" placeholder=""/>
+					<input type="text" name="txtma" value="<?=@$historia->ma;?>" placeholder=""/>
 				</div>
 			</div>
 			<br/>
@@ -200,14 +201,14 @@
 				<div style="float:left; width:519px; height:60px;">
 					<label>Hospitalización :</label>
 					<br/>
-					<input type="text" name="txthospitalizacion" value=""  placeholder="" />
+					<input type="text" name="txthospitalizacion" value="<?=@$historia->hospitalizacion;?>"  placeholder="" />
 				</div>
 			</div>
 			<div class="posicion1" >
 				<div style="float:left; width:519px; height:60px;">
 					<label>Hábitos Nocivos :</label>
 					<br/>
-					<input type="text" name="txthnocivos" value="" placeholder=""/>
+					<input type="text" name="txthnocivos" value="<?=@$historia->habitosnocivos;?>" placeholder=""/>
 				</div>
 			</div>
 			<br/>
@@ -223,7 +224,7 @@
 	<div class="posicion1" style="float: right;" >
 		<div style="float:left;  height:60px;">
 			<input type="submit" value="Guardar"  class="button red" />
-			<input type="reset" value="Reset" class="button red" />
+			<input type="reset" value="Reset" class="button red"/>
 		</div>
 	</div>
 </div>

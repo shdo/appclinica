@@ -16,7 +16,7 @@
 		}
 		function add($paciente){
 			if($this->db->insert('tb_paciente',$paciente)){
-				return TRUE;
+				return $this->db->insert_id();
 			}
 			else {
 				return FALSE;
