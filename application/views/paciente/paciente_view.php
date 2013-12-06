@@ -3,13 +3,13 @@
 </div>
 <br/>
 <ul class="tabs">
-	<li>
+	<li class="anamnesis">
 		<a href="#anamnesis">Anamnesis</a>
 	</li>
-	<li>
+	<li class="enfermedad">
 		<a href="#enfermedad_actual">Enfermedad Actual</a>
 	</li>
-	<li>
+	<li class="informe">
 		<a href="#informe">Informe</a>
 	</li>
 </ul>

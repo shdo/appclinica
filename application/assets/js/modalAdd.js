@@ -1,4 +1,22 @@
+function limpiarForm(){
+	$('input[name=txtFecha]').val('');$('input[name=txtTiempo]').val('');$('input[name=txtsp]').val('')
+	;$('textarea[name=txtRelato]').val('');$('input[name=txtFC]').val('');$('input[name=txtPA]').val('')
+	;$('input[name=txtFR]').val('');$('input[name=txtT]').val('');$('input[name=txtPeso]').val('')
+	;$('input[name=txtCabeza]').val('');$('input[name=txtCuello]').val('')
+	;$('input[name=txtTorax]').val('');$('input[name=txtCardio]').val('');$('textarea[name=txtAbdomen]').val('')
+	;$('textarea[name=txtGenito]').val('');$('textarea[name=txtLocomotor]').val('');$('textarea[name=txtDX]').val('');
+	;$('textarea[name=txtTratamiento]').val('');
+	;$('textarea[name=txtExa]').val('');
+}
 $(document).on('ready',function(){
+		$('.area .open-modal').on('click', function(){
+			limpiarForm();
+			$('#myModal').reveal({
+				animation:'fade', 
+				animationspeed: 300,                     
+     			closeonbackgroundclick: false,
+			});
+		});
 		$('#add').on('click', function(){
 			function Enfermedad(fecha,tiemenferm,sp,relato
 							,fc,pa,fr,temperatura,
@@ -57,15 +75,22 @@ $(document).on('ready',function(){
 	              	"<td>" + enferm.fecha + "</td>" +
 	              	"<td>" + enferm.tiemenferm+ "</td>" +
 	              	"<td>" + enferm.relato + "</td>" +
-	              	"<td style='text-align: center;'><a id='edit' href=#><input name='valor' type='hidden' value='"+json.id+"'/><img src=" + $('#gradient-style tbody').find('img').attr('src') + " width=20 height=20></a></td>" +
+	              	"<td style='text-align: center;'><a id='edit'><input name='valor' type='hidden' value='"+json.id+"'/><img src=" + $('#gradient-style tbody').find('img').attr('src') + " width=20 height=20></a></td>" +
 	            	"</tr>" );
 				}
 				else{
-					for(i=0;i<$('#gradient-style>tbody>tr').length;i++){
-						if(json.id==$('#gradient-style tbody tr').find('input').attr('value')){
-							alert('este es igual');
+					$.post('http://localhost/appclinica/paciente/enfermedad/getAll',{id:enferm.historiaclinicaid},function(rptas){
+						var jsonRpta = JSON.parse(rptas);
+						$('#gradient-style tbody tr').remove();
+						for(j=0;j<jsonRpta.length;j++){
+							$('#gradient-style tbody').append("<tr>" +
+	              			"<td>" + jsonRpta[j].fecha + "</td>" +
+	              			"<td>" + jsonRpta[j].tiemenferm+ "</td>" +
+			              	"<td>" + jsonRpta[j].relato + "</td>" +
+			              	"<td style='text-align: center;'><a id='edit'><input name='valor' type='hidden' value='"+jsonRpta[j].diagnosticoid+"'/><img src='http://localhost/appclinica/application/assets/img/edit.png' width=20 height=20></a></td>" +
+			            	"</tr>");
 						}
-					}
+					});
 				}
 	            $('.reveal-modal-bg').delay(300).fadeOut(300);
 	            $('#myModal').animate({
@@ -76,7 +101,7 @@ $(document).on('ready',function(){
 			});
 		});
 		
-		$('#gradient-style tbody #edit').on('click', function(){
+		$('#gradient-style .tabla').on('click','#edit', function(){
 			$.post('http://localhost/appclinica/paciente/enfermedad/get/'+$(this).find('input').attr('value'),{id:$(this).find('input').attr('value')}, function(rpta){
 				var json = JSON.parse(rpta);
 				$('input[name=txtFecha]').val(json.fecha);$('input[name=txtTiempo]').val(json.tiemenferm);$('input[name=txtsp]').val(json.sp)

@@ -2,7 +2,7 @@
 	<div class="area" style="display: table;">
 		<div class="posicion1">
 			<div style="float:left; width:250px; height:30px;">
-				<a href="#" data-reveal-id="myModal" data-animation="fade" data-closeonbackgroundclick="false"><img src="<?=IMG.'add.png'?>" /></a>
+				<a class="open-modal"><img src="<?=IMG.'add.png'?>" /></a>
             </div>
         </div>
         <div class="posicion1">
@@ -18,7 +18,7 @@
                             <?php endif ?>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="tabla">
                     	<?php if(is_array(@$diagnostico)):?>
 	                    	<?php foreach (@$diagnostico as $diagno):?>
 	                    		 <tr>
@@ -26,7 +26,7 @@
 	                                <td><?= $diagno->tiemenferm; ?></td>
 	                                <td><?= $diagno->relato; ?></td>
 	                                <?php if ($this->session->userdata['tipousuario']=='secretaria' || $this->session->userdata['tipousuario']=='administrador'): ?>
-	                                	<td style="text-align: center;"><a id="edit" href='#'><input name="valor" type="hidden" value="<?=$diagno->diagnosticoid?>" /><img src='<?= IMG . 'edit.png' ?>' width='20' height='20' /></a></td>
+	                                	<td style="text-align: center;"><a id="edit"><input name="valor" type="hidden" value="<?=$diagno->diagnosticoid?>" /><img src='<?= IMG . 'edit.png' ?>' width='20' height='20' /></a></td>
 	                                <?php endif ?>
 	                             </tr>
 	                    	<?php endforeach?>
@@ -39,7 +39,7 @@
         <br><br><br><br><br>
     </div>
 	<div id="myModal" class="reveal-modal">
-		<form id="Diagnostico" action="#">
+		<form id="frm-dialog" action="#">
 		<input type="hidden" name="hdnhistoriaid" value="<?=@$historia->historiaclinicaid;?>"/>
 		<input type="hidden" name="hdndiagnosticoid"/>
 		<div class="posicion1" style="float: left">

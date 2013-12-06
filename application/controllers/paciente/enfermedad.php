@@ -58,7 +58,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		}
 		
 		function getAll(){
-			
+			$id = json_decode($_POST['id'],TRUE);
+			$data = $this->enfermedad_model->getAll($id);
+			echo json_encode($data);
 		}
 		
 		function get(){

@@ -8,6 +8,17 @@ $(document).ready(function(){
         $('.itemSecretaria ul .subitem1').remove();
         $('.itemSistema ul .subitem1').remove();
     }
+    
+    if($('input[name=hdnpacienteid]').val()==''){
+    	$('.tabs .enfermedad').hide();
+    	$('.tabs .informe').hide();
+    	
+    }
+    else {
+    	
+    	$('.tabs .enfermedad').show();
+    	$('.tabs .informe').show();
+    }
 });
 
 

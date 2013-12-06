@@ -29,9 +29,7 @@ class Home extends CI_Controller {
             redirect(base_url() . 'login');
         }
         $estado_civil['estadocivil'] = array('S' => 'Soltero', 'C' => 'Casado', 'D' => 'Divorciado', 'V' => 'Viudo');
-        $tab = array('anamnesis' => $this->load->view('paciente/paciente_view_anamnesis', $estado_civil, TRUE),
-            'enfermedad' => $this->load->view('paciente/paciente_view_enfermedad', '', TRUE),
-            'informe' => $this->load->view('paciente/paciente_view_informe', '', TRUE));
+        $tab = array('anamnesis' => $this->load->view('paciente/paciente_view_anamnesis', $estado_civil, TRUE));
         $data = array('titulo' => 'Agregar Paciente',
             'contenido' => $this->load->view('paciente/paciente_view', $tab, TRUE));
         $this->load->view('home/home_view', $data);
