@@ -157,6 +157,23 @@
 					<br/>
 					<div class="posicion1" >
 						<div style="float:left; width:305px; height:60px;">
+							<label>Médico:</label>
+							<br/>
+							<select name="list_medico" required="" style="width: 305px">
+								<option  selected="" value="">Seleccionar...</option>
+								<?php
+									foreach ($medicos as $medico) {
+										echo '<option value="' . $medico->medicoid . '">' . $medico->nombcompleto . '</option>';
+									}
+								?>
+							</select>
+						</div>
+					</div>
+					<br/>
+					<br/>
+					<br/>
+					<div class="posicion1" >
+						<div style="float:left; width:305px; height:60px;">
 							<label>Especialidad:</label>
 							<br/>
 							<select name="list_especialidad" required="" style="width: 305px">

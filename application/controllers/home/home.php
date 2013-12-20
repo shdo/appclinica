@@ -36,7 +36,8 @@ class Home extends CI_Controller {
 		if ($this->session->userdata['is_logued_in'] == FALSE) {
             redirect(base_url() . 'login');
         }
-		$data=array('contenido' => $this->load->view('cita/cita_elegir_paciente','',TRUE));
+		$medicos['medicos'] = $this->medico_model->getAll();
+		$data=array('contenido' => $this->load->view('cita/cita_elegir_paciente',$medicos,TRUE));
 		$this->load->view('home/home_view', $data);
 	}
 

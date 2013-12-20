@@ -70,7 +70,8 @@ class Cita extends CI_Controller {
 					  'horainicio'=>$hora_i.':'.$this->input->post('list_minutos_i'),
 					  'horafin'=>$hora_f.':'.$this->input->post('list_minutos_f'),
 					  'secretariaid'=>2,
-					  'pacienteid'=>$this->input->post('hdnpacienteid'));
+					  'pacienteid'=>$this->input->post('hdnpacienteid'),
+					  'medicoid'=>$this->input->post('list_medico'));
 		$this->cita_model->add($cita);
 		redirect(base_url().'home/cita_medica');
 	}
@@ -91,6 +92,11 @@ class Cita extends CI_Controller {
 	function move(){
 		$tiempo = $this->uri->segment(5);
 		$this->cita_model->move($this->uri->segment(3), $this->uri->segment(4),$tiempo*60);
+	}
+	
+	function resize(){
+		$tiempo = $this->uri->segment(4);
+		$this->cita_model->resizable($this->uri->segment(3), $tiempo*60);
 	}
 }
 ?>

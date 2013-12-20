@@ -47,8 +47,12 @@
 			$this->db->update('tb_cita');
 		}
 		
-		function resizable(){
-			
+		
+		
+		function resizable($id,$tiempo){
+			$this->db->set('horafin',"SEC_TO_TIME(time_to_sec(horafin)+$tiempo)",FALSE);
+			$this->db->where('citaid',$id);
+			$this->db->update('tb_cita');
 		}
 		
 		function delete(){

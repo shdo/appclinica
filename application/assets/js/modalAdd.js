@@ -37,6 +37,9 @@ $(document).on('ready',function(){
 				
 			},
 			eventResize: function(event, dayDelta, minuteDelta, revertFunc){
+				if(dayDelta!=0 || minuteDelta!=0){
+					$.post('http://localhost/appclinica/home/agrandar_cita/'+event.id+'/'+minuteDelta);
+				}
 				console.log(event);
 				console.log(dayDelta);
 				console.log(minuteDelta);

@@ -61,6 +61,7 @@ $route['home/cita_medica'] = "home/home/cita_medica";
 $route['home/listar_cita/(:any)/(:any)'] = "cita/cita/getAll/$1/$2";
 $route['home/agregar_cita/(:any)'] = "home/home/cita_medica_elegir/$1";
 $route['home/mover_cita/(:num)/(:any)/(:any)'] = "cita/cita/move/$1/$2/$3";
+$route['home/agrandar_cita/(:num)/(:any)'] = "cita/cita/resize/$1/$2/";
 $route['404_override'] = '';
 
 
