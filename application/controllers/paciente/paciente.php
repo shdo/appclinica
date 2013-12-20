@@ -40,6 +40,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							'nombre'=>$this->input->post('txtnombre'),
 							'apepaterno'=>$this->input->post('txtapePaterno'),
 							'apematerno'=>$this->input->post('txtapeMaterno'),
+							'nomcompleto'=>$this->input->post('txtnombre').' '.$this->input->post('txtapePaterno').' '.$this->input->post('txtapeMaterno'),
 							'estadcivil'=>$this->input->post('list_estado'),
 							'edad'=>$this->input->post('txtedad'),
 							'ocupacion'=>$this->input->post('txtocupacion'),
@@ -73,6 +74,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							'nombre'=>$this->input->post('txtnombre'),
 							'apepaterno'=>$this->input->post('txtapePaterno'),
 							'apematerno'=>$this->input->post('txtapeMaterno'),
+							'nomcompleto'=>$this->input->post('txtnombre').' '.$this->input->post('txtapePaterno').' '.$this->input->post('txtapeMaterno'),
 							'estadcivil'=>$this->input->post('list_estado'),
 							'edad'=>$this->input->post('txtedad'),
 							'ocupacion'=>$this->input->post('txtocupacion'),
@@ -111,6 +113,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		
 		function getAll(){
 			
+		}
+		
+		function autocomplete(){
+			$letra = $this->input->post('dato');
+			$row = $this->paciente_model->get_like($letra);
+			echo json_encode($row);
 		}
 		
 		function get(){

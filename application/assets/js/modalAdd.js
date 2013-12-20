@@ -9,6 +9,53 @@ function limpiarForm(){
 	;$('textarea[name=txtExa]').val('');
 }
 $(document).on('ready',function(){
+		var uri = purl();
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+
+		var calendar = $('#calendar').fullCalendar({
+			eventDrop: function(event, dayDelta, minuteDelta, allDay, revertfunc){
+				if(dayDelta!=0 || minuteDelta!=0){
+					$.post('http://localhost/appclinica/home/mover_cita/'+event.id+'/'+dayDelta+'/'+minuteDelta);
+				}
+				console.log(event);
+				console.log(dayDelta);
+				console.log(minuteDelta);
+				console.log(allDay);
+				console.log(revertfunc);
+			},
+			dayClick: function(date, allDay, jsEvent, view){
+				var check = $.fullCalendar.formatDate(date,'yyyy-MM-dd');
+				var today = $.fullCalendar.formatDate(new Date(),'yyyy-MM-dd');
+				if(check<today){
+					alert('No puedes reservar citas en dias pasados');
+				}else{
+					window.location = 'http://localhost/appclinica/home/agregar_cita/'+$.fullCalendar.formatDate(date,'yyyy-MM-dd');
+				}
+				
+			},
+			eventResize: function(event, dayDelta, minuteDelta, revertFunc){
+				console.log(event);
+				console.log(dayDelta);
+				console.log(minuteDelta);
+				console.log(revertFunc);
+			},
+			header : {
+				left : 'prev,next today',
+				center : 'title',
+				right : 'month,agendaWeek,agendaDay'
+			},
+			editable : true,
+			slotMinutes: 10,
+			minTime:'8:00',
+			maxTime:'22:00',
+			hiddenDays: [0],
+			allDaySlot: false,
+			events: 'http://localhost/appclinica/home/listar_cita/'+null+'/'+null
+		});
+		
 		$('.area .open-modal').on('click', function(){
 			limpiarForm();
 			$('#myModal').reveal({
@@ -118,5 +165,166 @@ $(document).on('ready',function(){
      				closeonbackgroundclick: false,
 				});
 			});
+		});
+		
+		$('#open-modal-search').on('click',function(){
+			$('#txtBuscarCita').val('');
+			$('#modal-buscar').addClass('medium');
+			$('.medium').css('top','250px');
+			$('#modal-buscar').reveal({
+				animation:'fade', 
+				animationspeed: 300,                     
+     			closeonbackgroundclick: false,
+			});
+		});
+		$("#especialidad").click(function() {  
+        	if($("#especialidad").is(':checked')) {  
+            	camp='especialidad'
+        	}
+    	});
+		$("#medico").click(function() {  
+        	if($("#medico").is(':checked')) {  
+            	camp='nombcompleto'
+        	} 
+    	});
+		$('#txtBuscarCita').autocomplete({
+			source: function(request,response){
+				$.ajax({
+					type: 'POST',
+					url:'http://localhost/appclinica/cita/cita/autocomplete',
+					data: {
+						dato: $('#txtBuscarCita').val(),
+						campo: camp
+					},
+					dataType: 'json',
+					success: function(data){
+						if(data!=null){
+							if(camp=='especialidad'){
+								response($.map(data, function(item){
+									return {
+										label: item.especialidad,
+										value: item.especialidad,
+										campo: item.especialidad
+									}
+								}));
+							}
+							if(camp==='nombcompleto'){
+								response($.map(data, function(item){
+									return {
+										label: item.nombcompleto,
+										value: item.nombcompleto,
+										campo: item.nombcompleto
+									}
+								}));
+							}
+						}
+					},
+					error: function(){
+						
+					}
+				});
+			},
+			delay: 1000,
+			select: function(event, ui){
+				var url = 'http://localhost/appclinica/home/listar_cita/'+camp+'/'+ui.item.campo;
+				console.log(url);
+				$('#calendar table').remove();
+				$('#calendar div').remove();
+				$('#Msg').remove();
+				$('#ya').append("<label id='Msg' style='font-size: 24px; font-weight: bold;'>Citas Reservadas: "+ui.item.campo+"</label>");
+				$('#calendar').fullCalendar({
+					eventDrop: function(event, dayDelta, minuteDelta, allDay, revertfunc){
+						if(dayDelta!=0 || minuteDelta!=0){
+							$.post('http://localhost/appclinica/home/mover_cita/'+event.id+'/'+dayDelta+'/'+minuteDelta);
+						}
+						console.log(event);
+						console.log(dayDelta);
+						console.log(minuteDelta);
+						console.log(allDay);
+						console.log(revertfunc);
+					},
+					dayClick: function(date, allDay, jsEvent, view){
+						var check = $.fullCalendar.formatDate(date,'yyyy-MM-dd');
+						var today = $.fullCalendar.formatDate(new Date(),'yyyy-MM-dd');
+						if(check<today){
+							alert('No puedes reservar citas en dias pasados');
+						}else{
+							window.location = 'http://localhost/appclinica/home/agregar_cita/'+$.fullCalendar.formatDate(date,'yyyy-MM-dd');
+						}
+						
+					},
+					eventResize: function(event, dayDelta, minuteDelta, revertFunc){
+						console.log(event);
+						console.log(dayDelta);
+						console.log(minuteDelta);
+						console.log(revertFunc);
+					},
+					header : {
+						left : 'prev,next today',
+						center : 'title',
+						right : 'month,agendaWeek,agendaDay'
+					},
+					editable : true,
+					slotMinutes: 10,
+					minTime:'8:00',
+					maxTime:'22:00',
+					hiddenDays: [0],
+					allDaySlot: false,
+					events: url
+			});
+		
+		$('.area .open-modal').on('click', function(){
+			limpiarForm();
+			$('#myModal').reveal({
+				animation:'fade', 
+				animationspeed: 300,                     
+     			closeonbackgroundclick: false,
+			});
+		});
+				$('.reveal-modal-bg').delay(300).fadeOut(300);
+	            $('#modal-buscar').animate({
+	            	"opacity" : 0
+	            }, 300, function() {
+	            	$('#modal-buscar').css({'opacity' : 1, 'visibility' : 'hidden', 'top' : 100});
+	            });
+			}
+		});
+		
+		$('#txtbuscarPaciente').autocomplete({
+			source: function(request,response){
+				$.ajax({
+					type: 'POST',
+					url:'http://localhost/appclinica/paciente/paciente/autocomplete',
+					data: {
+						dato: $('#txtbuscarPaciente').val()
+					},
+					dataType: 'json',
+					success: function(data){
+						if(data!=null){
+							response($.map(data, function(item){
+								return {
+									label: item.nomcompleto,
+									value: item.nomcompleto,
+									pacienteid: item.pacienteid,
+									nomcompleto: item.nomcompleto
+								}
+							}));
+						}
+					},
+					error: function(){
+						
+					}
+				});
+			},
+			delay: 1000,
+			select: function(event, ui){
+				$('.tabs').hide();
+				$('#nuevo').hide();
+				$('#recurrente').hide();
+				$('input[name=hdnpacienteid]').val(ui.item.pacienteid);
+				$('input[name=txtnombre]').val(ui.item.nomcompleto);
+				$('input[name=hdnfecha_actual]').val(uri.segment(4));
+				$('.content .agregar_cita').show();
+			}
 		});
 });

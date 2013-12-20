@@ -23,6 +23,22 @@ class Home extends CI_Controller {
         $data['titulo'] = 'Home';
         $this->load->view('home/home_view', $data);
     }
+	
+	function cita_medica(){
+		if ($this->session->userdata['is_logued_in'] == FALSE) {
+            redirect(base_url() . 'login');
+        }
+		$data=array('contenido' => $this->load->view('cita/cita_view','',TRUE));
+		$this->load->view('home/home_view', $data);
+	}
+
+	function cita_medica_elegir(){
+		if ($this->session->userdata['is_logued_in'] == FALSE) {
+            redirect(base_url() . 'login');
+        }
+		$data=array('contenido' => $this->load->view('cita/cita_elegir_paciente','',TRUE));
+		$this->load->view('home/home_view', $data);
+	}
 
     function formPaciente() {
         if ($this->session->userdata['is_logued_in'] == FALSE) {

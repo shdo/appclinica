@@ -28,7 +28,7 @@ a {
 	color: Red;
 }
 
-h2 {
+.legend h2 {
 	padding: 0.5em;
 	font-size: 16px;
 	font-family: Verdana;
@@ -256,7 +256,9 @@ clear: both;
 	background-image: url('../img/close.png');
 }
 
-
+#txtbuscarPaciente {
+	width: 400px;
+}
 
 
 

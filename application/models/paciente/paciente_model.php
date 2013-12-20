@@ -22,6 +22,13 @@
 				return FALSE;
 			}
 		}
+		
+		function get_like($letra){
+			$this->db->select('pacienteid,nomcompleto');
+			$this->db->like('nomcompleto',$letra);
+			$query = $this->db->get('tb_paciente');
+			return $query->result();
+		}
 		/*function delete($pacienteid){
 				
 			$this->db->where('pacienteid',$pacienteid);

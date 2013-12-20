@@ -8,12 +8,19 @@
         <link rel="stylesheet" href="<?= CSS . 'cssDoctor.css' ?>"/>
         <link rel="stylesheet" href="<?= CSS . 'table.css' ?>"/>
         <link rel="stylesheet" href="<?= CSS . 'reveal.css' ?>"/>
+        <link rel="stylesheet" href="<?= CSS . 'jquery-ui.css' ?>"/>
+        <link rel="stylesheet" href="<?= CSS . 'fullcalendar.css' ?>"/>
+        <link rel="stylesheet" href="<?= CSS . 'fullcalendar.print.css' ?>" media="print"/>
         <script src="<?=JS.'jquery-1.10.2.min.js'?>"></script>
+        <script src="<?=JS.'jquery-ui-1.10.3.custom.min.js'?>"></script>
+        <script src="<?=JS.'purl.js'?>"></script>
         <script src="<?=JS.'jquery.reveal.js'?>"></script>
         <script type="text/javascript" src="<?= JS . 'viewLogen.js' ?>"></script>
         <script type="text/javascript" src="<?= JS . 'tab.js' ?>"></script>
         <script type="text/javascript" src="<?= JS . 'roles.js' ?>"></script>
         <script type="text/javascript" src="<?= JS . 'modalAdd.js' ?>"></script>
+        <script type="text/javascript" src="<?= JS . 'fullcalendar.min.js' ?>"></script>
+        <script type="text/javascript" src="<?= JS . 'calendario.js' ?>"></script>
     </head>
     <body>
         <header id="encabesado">
@@ -48,10 +55,9 @@
                     </li>
                     <li class="itemCita"><a href="">Citas <span>4</span></a>
                         <ul>
-                            <li class="subitem1"><a href="">Agregar Nueva Cita </a></li>
+                            <li class="subitem1"><a href="<?=base_url().'home/cita_medica'?>">Agregar Nueva Cita </a></li>
                             <li class="subitem2"><a href="">Ver Citas Del Dia </a></li>
-                            <li class="subitem3"><a href="">Imprimir Citas </a></li>
-                            <li class="subitem4"><a href="">Citas Pendientes</a></li>
+                            <li class="subitem5"><a href="">Imprimir Citas </a></li>
                         </ul>
                     </li>
                         
