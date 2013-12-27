@@ -58,6 +58,7 @@ $route['home/listado_secretaria'] = "home/home/formListarSecretaria";
 $route['home/actualizar_secretaria/(:num)'] = "secretaria/secretaria/get/$1";
 $route['home/eliminar_secretaria/(:num)/(:any)'] = "secretaria/secretaria/delete/$1/$2";
 $route['home/cita_medica'] = "home/home/cita_medica";
+$route['home/cita_asignada'] = "home/home/cita_asignada";
 $route['home/listar_cita/(:any)/(:any)'] = "cita/cita/getAll/$1/$2";
 $route['home/agregar_cita/(:any)'] = "home/home/cita_medica_elegir/$1";
 $route['home/mover_cita/(:num)/(:any)/(:any)'] = "cita/cita/move/$1/$2/$3";

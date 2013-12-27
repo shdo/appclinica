@@ -54,7 +54,7 @@
                                 <td><?= $medico->domicilio; ?></td>
                                 <td><?= $medico->telefono; ?></td>
                                 <?php if ($this->session->userdata['tipousuario']=='administrador'): ?>
-                                <td style="text-align: center;"><a href='<?= base_url() . 'home/actualizar_doctor/' . $medico->personaid ?>'><img src='<?= IMG . 'edit.png' ?>' width='20' height='20' /></a></td>
+                                <td style="text-align: center;"><a href='<?= base_url() . 'home/actualizar_doctor/' . $medico->medicoid ?>'><img src='<?= IMG . 'edit.png' ?>' width='20' height='20' /></a></td>
                                 <td style="text-align: center;"><a href='<?= base_url() . 'home/eliminar_doctor/' . $medico->medicoid . '/' . $medico->personaid ?>'><img src='<?= IMG . 'trash.png' ?>' width='20' height='20' /></a></td>
                                 <?php endif ?>
                             </tr>

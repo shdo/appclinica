@@ -3,6 +3,23 @@
         function __construct() {
             parent::__construct();
         }
+
+        function cita_asignada($medicoid, $simbolo){
+        	$this->db->select('tb_paciente.nomcompleto as nombpaciente, tb_persona.nombcompleto as nombmedico,
+        					   tb_medico.especialidad as espec, tb_cita.fecha, tb_cita.horainicio');	
+			$this->db->from('tb_cita');
+			$this->db->join('tb_paciente','tb_cita.pacienteid=tb_paciente.pacienteid');
+			$this->db->join('tb_medico','tb_medico.medicoid=tb_cita.medicoid');
+			$this->db->join('tb_persona','tb_persona.personaid=tb_medico.personaid');	
+			if($simbolo==='pendientes'){
+				$this->db->where('CURDATE()<=tb_cita.fecha');
+			}else{
+				$this->db->where('CURDATE()>tb_cita.fecha');
+			}
+			$this->db->where('tb_cita.medicoid', $medicoid);
+			$query = $this->db->get();
+			return $query->result();
+        }
 		
 		function getAll($campo, $valor){
 			$this->db->select('*');	

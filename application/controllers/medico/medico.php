@@ -43,7 +43,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 							'distritoid'=>1,
 							'estadocivilid'=>$this->input->post('list_estado'));
 				$personaid = $this->persona_model->add($persona);
-				$medico =array('personaid'=>$personaid);
+				$medico =array('personaid'=>$personaid,
+							   'especialidad'=>$this->input->post('txtespecialidad'));
 				$this->medico_model->add($medico);
 				$this->session->set_flashdata('mensaje','Se guardo satisfactoriamente');
 				redirect(base_url().'home/agregar_doctor','refresh');
@@ -79,6 +80,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		function getAll(){
 			
 		}
+
+		function autocomplete(){
+			$row = $this->medico_model->getLike($this->input->post('dato'));
+			echo json_encode($row);
+		}
 		
 		function get(){
 			if($this->session->userdata['is_logued_in']==FALSE){
@@ -86,10 +92,15 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             }
 			$personaid = $this->uri->segment(3);
 			$datos = array('estadocivil'=>array('1'=>'Soltero','2'=>'Casado','3'=>'Viudo','4'=>'Divorciado'),
-						   'medico'=>$this->persona_model->get($personaid));
+						   'medico'=>$this->medico_model->get($personaid));
 			$data=array('titulo'=>'Actualizar Doctor',
                         'contenido'=>$this->load->view('doctor/doctor_view',$datos,TRUE));
 			$this->load->view('home/home_view',$data);
+		}
+
+		function getByEspecialidad(){
+			$query = $this->medico_model->getByEspecialidad($this->input->post('especialidad'));
+			echo json_encode($query);
 		}
     }
 ?>

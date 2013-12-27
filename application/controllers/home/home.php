@@ -36,10 +36,18 @@ class Home extends CI_Controller {
 		if ($this->session->userdata['is_logued_in'] == FALSE) {
             redirect(base_url() . 'login');
         }
-		$medicos['medicos'] = $this->medico_model->getAll();
-		$data=array('contenido' => $this->load->view('cita/cita_elegir_paciente',$medicos,TRUE));
+        $busqueda['especialidades']=$this->medico_model->getEspecialidad();
+		$data=array('contenido' => $this->load->view('cita/cita_elegir_paciente',$busqueda,TRUE));
 		$this->load->view('home/home_view', $data);
 	}
+
+    function cita_asignada(){
+        if ($this->session->userdata['is_logued_in'] == FALSE) {
+            redirect(base_url() . 'login');
+        }
+        $data=array('contenido' => $this->load->view('cita/cita_view_asignada','',TRUE));
+        $this->load->view('home/home_view',$data);
+    }
 
     function formPaciente() {
         if ($this->session->userdata['is_logued_in'] == FALSE) {

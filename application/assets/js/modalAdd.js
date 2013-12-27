@@ -169,6 +169,46 @@ $(document).on('ready',function(){
 				});
 			});
 		});
+
+		/*$('#subirArchivo').on('click', function(){
+			$.post('http://localhost/appclinica/paciente/paciente/upload/',{historia:$('input[name=hdnhistoriaid]').val()}, function(data){
+				console.log($("#gradient-style-informe"));
+				var jsonRpta = JSON.parse(data);
+				$("#gradient-style-informe tbody").append( "<tr>" +
+	              "<td>" + json.nombre + "</td>" +
+	              "<td>" + json.tipo+ "</td>" +
+	              "<td></td>" +
+	              "</tr>" );
+			});
+		});*/
+
+		function cargar_tabla(){
+			$("#gradient-style-informe tbody").append( "<tr>" +
+	           "<td>" + json.nombre + "</td>" +
+	           "<td>" + json.tipo+ "</td>" +
+	           "<td></td>" +
+	           "</tr>" );
+		}
+		
+		$('#frmSubir').submit(function(e) {
+      		e.preventDefault();
+      		$.ajaxFileUpload({
+         		url         :'http://localhost/appclinica/paciente/paciente/upload/', 
+         		secureuri      :false,
+         		fileElementId  :'f_subir',
+         		dataType    : 'json',
+         		data        : {
+            		'historia' : $('input[name=hdnhistoriaid]').val()
+         		},
+         		success  : function (data, status)
+         		{
+					console.log($("#gradient-style-informe"));
+					var jsonRpta = JSON.parse(data);
+					cargar_tabla();
+         		}
+      		});
+      		return false;
+   		});
 		
 		$('#open-modal-search').on('click',function(){
 			$('#txtBuscarCita').val('');
@@ -180,11 +220,24 @@ $(document).on('ready',function(){
      			closeonbackgroundclick: false,
 			});
 		});
+
+		$('#open-modal-informe').on('click',function(){
+			$('#f_subir').val('');
+			$('#modal-informe').addClass('medium');
+			$('.medium').css('top','250px');
+			$('#modal-informe').reveal({
+				animation:'fade', 
+				animationspeed: 300,                     
+     			closeonbackgroundclick: false,
+			});
+		});
+
 		$("#especialidad").click(function() {  
         	if($("#especialidad").is(':checked')) {  
             	camp='especialidad'
         	}
     	});
+
 		$("#medico").click(function() {  
         	if($("#medico").is(':checked')) {  
             	camp='nombcompleto'
@@ -329,5 +382,48 @@ $(document).on('ready',function(){
 				$('input[name=hdnfecha_actual]').val(uri.segment(4));
 				$('.content .agregar_cita').show();
 			}
+		});
+		$('#buscarCita').autocomplete({
+			source: function(request,response){
+				$.ajax({
+					type: 'POST',
+					url:'http://localhost/appclinica/medico/medico/autocomplete',
+					data: {
+						dato: $('#buscarCita').val()
+					},
+					dataType: 'json',
+					success: function(data){
+						if(data!=null){
+							response($.map(data, function(item){
+								return {
+									label: item.nombcompleto,
+									value: item.nombcompleto,
+									medicoid: item.medicoid,
+									nomcompleto: item.nombcompleto
+								}
+							}));
+						}
+					},
+					error: function(){
+						
+					}
+				});
+			},
+			delay: 1000,
+			select: function(event, ui){
+				$('#c_atendidas').attr('href','http://localhost/appclinica/cita/cita/report/'+ui.item.medicoid+'/atendidas/'+$('#buscarCita').val());
+				$('#c_pendientes').attr('href','http://localhost/appclinica/cita/cita/report/'+ui.item.medicoid+'/pendientes/'+$('#buscarCita').val());
+			}
+		});
+		$('#cboEspecialidad').on('change', function(){
+			$('#cboEspecialidad option:selected').each(function(){
+				$.post('http://localhost/appclinica/medico/medico/getByEspecialidad',{especialidad:$('#cboEspecialidad').val()},function(data){
+					var json = JSON.parse(data);
+					$('#cboMedico option').remove();
+					for(var i=0;i<json.length;i++){
+						$('#cboMedico').append('<option value='+json[i].medicoid+'>'+json[i].nombcompleto+'</option>');
+					}
+				});
+			});
 		});
 });

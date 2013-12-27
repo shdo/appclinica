@@ -12,6 +12,27 @@ class Cita extends CI_Controller {
         $this->load->model('cita/cita_model');
     }
 
+    function report(){
+		$this->html2pdf->folder('./files/pdfs/cita/');
+		$this->html2pdf->filename('citas.pdf');
+		$this->html2pdf->paper('a4','portrait');
+		$cita['citas'] = $this->cita_model->cita_asignada($this->uri->segment(4),$this->uri->segment(5));
+		$this->html2pdf->html(utf8_decode($this->load->view('cita/cita_view_report',$cita,TRUE)));
+			
+		if($this->html2pdf->create('save')){
+			if(is_dir("./files/pdfs/cita"))
+        	{
+            	$filename = "citas.pdf"; 
+            	$route = base_url("files/pdfs/cita/citas.pdf"); 
+            	if(file_exists("./files/pdfs/cita/".$filename))
+            	{
+                	header('Content-type: application/pdf'); 
+                	readfile($route);
+            	}	
+        	}
+		}
+	}
+
     function index() {
         if ($this->session->userdata['is_logued_in'] == FALSE) {
             redirect(base_url() . 'login');
@@ -52,6 +73,7 @@ class Cita extends CI_Controller {
 	function autocomplete(){
 		$letra = $this->input->post('dato');
 		$campo = $this->input->post('campo');
+		if($campo==='especialidad'){$campo='tb_cita.especialidad';}
 		$row = $this->cita_model->get_like($letra,$campo);
 		echo json_encode($row);
 	}
@@ -77,14 +99,24 @@ class Cita extends CI_Controller {
 	}
 	
 	function getAll(){
-		$citas = $this->cita_model->getAll($this->uri->segment(3), str_replace('%20',' ',$this->uri->segment(4)));
+		$campo=$this->uri->segment(3);
+		if($campo==='especialidad'){$campo='tb_cita.especialidad';}
+		$citas = $this->cita_model->getAll($campo, str_replace('%20',' ',$this->uri->segment(4)));
 		$cita_json = array();
+		$today = date('Y-m-d');
+		$color = '#3a87ad';
+		$bColor = '#3a87ad';
 		foreach ($citas as $cita) {
+			if($cita->fecha<$today){$color='#ed3e3e';$bColor='#ed3e3e';}
 			$cita_json[] = array('id'=>$cita->citaid,
-							   'title'=>$cita->nomcompleto,
-							   'start'=>$cita->fecha.' '.$cita->horainicio,
-							   'end'=>$cita->fecha.' '.$cita->horafin,
-							   'allDay'=>FALSE);
+							     'title'=>$cita->nomcompleto,
+							     'start'=>$cita->fecha.' '.$cita->horainicio,
+							     'end'=>$cita->fecha.' '.$cita->horafin,
+							     'allDay'=>FALSE,
+							     'backgroundColor'=>$color,
+							     'borderColor'=>$bColor);
+			$color='#3a87ad';
+			$bColor = '#3a87ad';
 		}
 		echo json_encode($cita_json);
 	}

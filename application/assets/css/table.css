@@ -31,6 +31,39 @@
 	color: #339;
 }
 
+#gradient-style-informe {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	text-align: left;
+	border-collapse: collapse;
+}
+#gradient-style-informe th {
+	font-size: 13px;
+	text-align: left;
+	font-weight: normal;
+	padding: 8px;
+	background: #b9c9fe url('img/table/gradhead.png') repeat-x;
+	border-top: 2px solid #d3ddff;
+	border-bottom: 1px solid #fff;
+	color: #039;
+}
+#gradient-style-informe td {
+	padding: 8px;
+	border-bottom: 1px solid #fff;
+	color: #669;
+	border-top: 1px solid #fff;
+	background: #e8edff url('img/table/gradback.png') repeat-x;
+}
+#gradient-style-informe tfoot tr td {
+	background: #e8edff;
+	font-size: 12px;
+	color: #99c;
+}
+#gradient-style-informe tbody tr:hover td {
+	background: #d0dafd url('img/table/gradhover.png') repeat-x;
+	color: #339;
+}
+
 .CSSTableGenerator tr:nth-child(odd) {
 	background-color: #b1b9c9;
 }

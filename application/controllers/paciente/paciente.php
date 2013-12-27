@@ -7,6 +7,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			$this->load->model('paciente/paciente_model');
 			$this->load->model('paciente/historia_clinica_model');
 			$this->load->model('paciente/enfermedad_model');
+			$this->load->model('informe/informe_model');
     	}
 		
 		function report(){
@@ -34,6 +35,31 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			}
 		}
 		
+		function upload() {
+	        $config['upload_path'] = './uploads/';
+	        $config['allowed_types'] = 'doc|docx';
+	        $config['max_size'] = '10000';
+
+	        $this->load->library('upload', $config);
+	        if(! $this->upload->do_upload('f_subir')){
+	        	$error = array('error' => $this->upload->display_errors());
+	        	echo json_encode($error);
+	        }
+	        else{
+	        	$file_info = $this->upload->data();
+		        $data = array('upload_data' => $this->upload->data());
+		        $ruta = $file_info['full_path'];
+		        $nombre = $file_info['raw_name'];
+		        $tipo = $file_info['file_ext'];
+		        $historiaclinicaid = $this->input->post('historia');
+		        $informe = array('ruta' => $ruta,'nombre'=>$nombre,'tipo'=>$tipo,'historiaclinicaid'=>$historiaclinicaid);
+		        $subir = $this->informe_model->subir($informe);      
+		        $data['nombre'] = $nombre;
+		        $data['tipo'] = $tipo;
+		        echo json_encode($data);
+	        }
+	    }
+
 		function addOrUpdate(){
 			if($this->input->post('hdnpacienteid')==NULL){
 				$paciente = array(
@@ -130,6 +156,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			$datos = array('paciente'=>$this->paciente_model->get($pacienteid),
 						   'historia'=>$this->historia_clinica_model->get($pacienteid),
 						   'diagnostico'=>$this->enfermedad_model->getAll($historia->historiaclinicaid),
+						   'informe'=>$this->informe_model->get($historia->historiaclinicaid),
 						   'estadocivil'=>array('S'=>'Soltero','C'=>'Casado','D'=>'Divorciado','V'=>'Viudo'));
 		     $tab = array('anamnesis'=>$this->load->view('paciente/paciente_view_anamnesis',$datos,TRUE),
 						 'enfermedad'=>$this->load->view('paciente/paciente_view_enfermedad','',TRUE),

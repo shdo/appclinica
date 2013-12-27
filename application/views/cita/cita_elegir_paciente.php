@@ -157,13 +157,13 @@
 					<br/>
 					<div class="posicion1" >
 						<div style="float:left; width:305px; height:60px;">
-							<label>Médico:</label>
+							<label>Especialidad:</label>
 							<br/>
-							<select name="list_medico" required="" style="width: 305px">
-								<option  selected="" value="">Seleccionar...</option>
+							<select id="cboEspecialidad" name="list_especialidad" required="" style="width: 305px">
+								<option  value="">Seleccionar...</option>
 								<?php
-									foreach ($medicos as $medico) {
-										echo '<option value="' . $medico->medicoid . '">' . $medico->nombcompleto . '</option>';
+									foreach ($especialidades as $especialidad) {
+										echo '<option value="'.$especialidad->especialidad.'">'.$especialidad->especialidad.'</option>';
 									}
 								?>
 							</select>
@@ -174,19 +174,12 @@
 					<br/>
 					<div class="posicion1" >
 						<div style="float:left; width:305px; height:60px;">
-							<label>Especialidad:</label>
+							<label>Médico:</label>
 							<br/>
-							<select name="list_especialidad" required="" style="width: 305px">
-								<option  value="">Seleccionar...</option>
-								<option  value="Medicina General">Medicina General</option>
-								<option  value="Traumatologia">Traumatologia</option>
-								<option  value="Cardiologia">Cardiologia</option>
+							<select id="cboMedico" name="list_medico" required="" style="width: 305px">
 							</select>
 						</div>
-					</div>
-					<br/>
-					<br/>
-					<br/>
+					</div><br/>
 					<div class="posicion1" >
 						<div style="float:left; width:305px; height:60px;">
 							<label>Incio de la Cita:</label>

@@ -111,11 +111,18 @@
 					</div>
 				</div>
 				<br><br><br>
+				<div class="posicion1" >
+					<div style="float:left; width:340px; height:60px;">
+						<label>Especialidad:</label>
+						<br/>
+						<input type="text" name="txtespecialidad" value="<?=@$medico->especialidad?>"  placeholder="Escriba Nombres" required="" />
+					</div>
+				</div>
 				<div class="posicion1">
-					<div style="float:left; width:1020px; height:60px;">
+					<div style="float:left; width:696px; height:60px;">
 						<label>Dirección:</label>
 						<br/>
-						<input type="text" name="txtdireccion" value="<?=@$medico->domicilio;?>"  placeholder="Escriba Direccion" required="" style="width: 595px;"/>
+						<input type="text" name="txtdireccion" value="<?=@$medico->domicilio;?>"  placeholder="Escriba Direccion" required="" style="width: 599px;"/>
 					</div>
 				</div>
 			</div>
