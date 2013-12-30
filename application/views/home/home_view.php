@@ -29,7 +29,7 @@
                 <a href="<?= base_url() . 'home' ?>"><img src="<?= IMG . 'logo.png' ?>" alt="Logo" title="Inicio" /></a>        	            			
             </div>	
             <div id="account_info">
-                <span style="padding-left: 50px; color:black; font-size:14px;"></span>
+                <span style="padding-left: 50px; color:black; font-size:14px;"><?php $mensaje=$this->session->flashdata('usuario');if($mensaje){echo $mensaje;}?></span>
             </div>    
         </header>
         <div class="contenedor">

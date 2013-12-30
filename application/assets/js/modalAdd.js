@@ -59,14 +59,16 @@ $(document).on('ready',function(){
 			events: 'http://localhost/appclinica/home/listar_cita/'+null+'/'+null
 		});
 		
-		$('.area .open-modal').on('click', function(){
+		$('#enfermedad_actual #open-modal-enfermedad').on('click', function(){
 			limpiarForm();
+			$('.reveal-modal-bg').remove();
 			$('#myModal').reveal({
 				animation:'fade', 
 				animationspeed: 300,                     
      			closeonbackgroundclick: false,
 			});
 		});
+
 		$('#add').on('click', function(){
 			function Enfermedad(fecha,tiemenferm,sp,relato
 							,fc,pa,fr,temperatura,
@@ -182,14 +184,6 @@ $(document).on('ready',function(){
 			});
 		});*/
 
-		function cargar_tabla(){
-			$("#gradient-style-informe tbody").append( "<tr>" +
-	           "<td>" + json.nombre + "</td>" +
-	           "<td>" + json.tipo+ "</td>" +
-	           "<td></td>" +
-	           "</tr>" );
-		}
-		
 		$('#frmSubir').submit(function(e) {
       		e.preventDefault();
       		$.ajaxFileUpload({
@@ -203,8 +197,17 @@ $(document).on('ready',function(){
          		success  : function (data, status)
          		{
 					console.log($("#gradient-style-informe"));
-					var jsonRpta = JSON.parse(data);
-					cargar_tabla();
+					$("#gradient-style-informe tbody").append( "<tr>" +
+	           		  "<td>" + data.nombre + "</td>" +
+	           		  "<td>" + data.tipo+ "</td>" +
+	           		  "<td style='text-align: center;'><a id=edit><input name=valor type=hidden value= /><img src=http://localhost/appclinica/application/assets/img/download.png width='20' height='20' /></a></td>" +
+	           		  "</tr>" );
+					$('.reveal-modal-bg').delay(300).fadeOut(300);
+	            	$('#modal-informe').animate({
+	            		"opacity" : 0
+	            	}, 300, function() {
+	            		$('#modal-informe').css({'opacity' : 1, 'visibility' : 'hidden', 'top' : 100});
+	            	});
          		}
       		});
       		return false;
@@ -221,10 +224,11 @@ $(document).on('ready',function(){
 			});
 		});
 
-		$('#open-modal-informe').on('click',function(){
+		$('#informe #open-modal-informe').on('click',function(){
 			$('#f_subir').val('');
 			$('#modal-informe').addClass('medium');
 			$('.medium').css('top','250px');
+			$('.reveal-modal-bg').remove();
 			$('#modal-informe').reveal({
 				animation:'fade', 
 				animationspeed: 300,                     
@@ -329,14 +333,14 @@ $(document).on('ready',function(){
 					events: url
 			});
 		
-		$('.area .open-modal').on('click', function(){
+		/*$('.area .open-modal').on('click', function(){
 			limpiarForm();
 			$('#myModal').reveal({
 				animation:'fade', 
 				animationspeed: 300,                     
      			closeonbackgroundclick: false,
 			});
-		});
+		});*/
 				$('.reveal-modal-bg').delay(300).fadeOut(300);
 	            $('#modal-buscar').animate({
 	            	"opacity" : 0

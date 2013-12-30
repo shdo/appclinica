@@ -2,7 +2,7 @@
 	<div class="area" style="display: table;">
 		<div class="posicion1">
 			<div style="float:left; width:250px; height:30px;">
-				<a class="open-modal"><img src="<?=IMG.'add.png'?>" /></a>
+				<a id="open-modal-enfermedad"><img src="<?=IMG.'add.png'?>" /></a>
             </div>
         </div>
         <div class="posicion1">

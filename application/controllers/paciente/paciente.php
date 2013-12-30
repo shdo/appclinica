@@ -153,14 +153,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
             }
 			$pacienteid = $this->uri->segment(3);
 			$historia = $this->historia_clinica_model->get($pacienteid);
-			$datos = array('paciente'=>$this->paciente_model->get($pacienteid),
-						   'historia'=>$this->historia_clinica_model->get($pacienteid),
-						   'diagnostico'=>$this->enfermedad_model->getAll($historia->historiaclinicaid),
-						   'informe'=>$this->informe_model->get($historia->historiaclinicaid),
-						   'estadocivil'=>array('S'=>'Soltero','C'=>'Casado','D'=>'Divorciado','V'=>'Viudo'));
-		     $tab = array('anamnesis'=>$this->load->view('paciente/paciente_view_anamnesis',$datos,TRUE),
-						 'enfermedad'=>$this->load->view('paciente/paciente_view_enfermedad','',TRUE),
-						 'informe'=>$this->load->view('paciente/paciente_view_informe','',TRUE));
+			$datosInforme = array('informe'=>$this->informe_model->get($historia->historiaclinicaid));
+			$datosDiagnostico = array('diagnostico'=>$this->enfermedad_model->getAll($historia->historiaclinicaid));
+			$datosAnamnesis = array('paciente'=>$this->paciente_model->get($pacienteid),
+						   			'historia'=>$this->historia_clinica_model->get($pacienteid),
+						   			'estadocivil'=>array('S'=>'Soltero','C'=>'Casado','D'=>'Divorciado','V'=>'Viudo'));
+		     $tab = array('anamnesis'=>$this->load->view('paciente/paciente_view_anamnesis',$datosAnamnesis,TRUE),
+						  'enfermedad'=>$this->load->view('paciente/paciente_view_enfermedad',$datosDiagnostico,TRUE),
+						  'documentos'=>$this->load->view('paciente/paciente_view_informe',$datosInforme,TRUE));
 			$data=array('titulo'=>'Actualizar Paciente',
                         'contenido'=>$this->load->view('paciente/paciente_view',$tab,TRUE));
 			$this->load->view('home/home_view',$data);
